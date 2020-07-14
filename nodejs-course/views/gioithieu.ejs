@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+<title>giới thiệu khóa học</title>
+
+<style>
+    *{
+		margin: 0;
+		padding: 0;
+	}
+	img{
+		width: 100%;
+	}
+
+	.container{
+		width: 1000px;
+		margin: 0 auto;
+		padding: 30px 0px;
+		background-color: #F1FCD6;
+	}
+	h1 {
+        font: 200 60px/1.2 'Merienda One', Helvetica, sans-serif;
+        color: rgba(0,0,0,0.7);
+        text-shadow: 3px 3px 3px #fff;
+    }
+	.decription{
+		width: 945px;
+		height: 30px;
+		border: 1px solid lightgray;
+		border-left: 4px solid red;
+		border-radius: 4px;
+		padding: 25px;
+		background-color: #FFDADB;
+	}
+	.list_mt{
+		padding: 10px;
+		padding-left: 30px;
+		line-height: 25px;
+	}
+	button{
+		display: inline-block;
+		background-color: green;
+		border: 1px solid red;
+		border-radius: 4px;
+	}
+	a{
+		text-decoration: none;
+		font-size: 20px;
+		color: white;
+	}
+
+	 #ad_right{
+		position: fixed;
+		bottom: 0;
+		right: 0;
+	}
+	#exit{
+		text-align: right;
+		font-size: 12px;
+	}
+	#exit a{
+		text-decoration: none;
+		padding: 2px 4px;
+		color: blue;
+	}
+	#conten{
+		border: 1px solid #C0483C;
+	}
+	#look{
+		display: none;
+		text-align: right;
+		font-size: 12px;
+	}
+	#look a{
+		text-decoration: none;
+		padding: 2px 4px;
+		color: green;
+	}
+	</style>
+</head>
+
+<body>
+    <div class="container">
+    	<h1 style="color: green; text-align: center" id="dautrang">GIỚI THIỆU VỀ LẬP TRÌNH WEB</h1><br>
+    	<img src="imagine/a_tongquan.jpg" ><br>
+    	<p class="decription">Các khái niệm cơ bản về Internet, lập trình web ở phía Client, lập trình web ở phía Server, website động là gì, website tĩnh là gì?</p><br>
+    	<hr><br>
+
+    	<h3>Mục tiêu</h3>
+    	<ul type="disc" class="list_mt">
+    		<li>Các khái niệm về internet.</li>
+    		<li>Lập trình phía client.</li>
+    		<li>Lập trình phía server.</li>
+    	</ul>
+    	<h3>Nội dung</h3>
+    	<ol type="1" class="list_mt">
+    		<li>Giới thiệu về internet và một số khái niệm.</li>
+    		<li>Tổng quan về lập trình web.</li>
+    		<li>Môi trường cài đặt.</li>
+    	</ol>
+    	<h3>Giới thiệu về internet.</h3>
+    	<ul type="disc" class="list_mt">
+    	    <li>Là tập hợp các máy tính nối mạng trên thế giới nhằm trao đổi thông tin với nhau thông qua giao thức TCP/IP (Transmission Control Protocol/Internet Protocol).</li>
+    	    <li>Mang lại rất nhiều tiện ích hữu dụng cho người sử dụng, nổi bật nhất là dịch vụ thư điện tử (email), trò chuyện trực tuyến (chat) và truy tìm dữ liệu (search engine).</li>
+    	    <li>Dịch vụ được dùng rất phổ biến trên Internet là World Wide Web (WWW, thường được gọi tắt là Web).</li>
+		</ul>
+        <h3>Web client</h3>
+        <ul type="disc" class="list_mt">
+        	<li>Máy tính dùng để truy cập các trang web.</li>
+        	<li>Có khả năng yêu cầu và nhận kết quả từ Web Server.</li>
+        </ul>
+        <h3>Trình duyệt Web-Web browser</h3>
+        <ul type="disc" class="list_mt">
+        	<li>Phần mềm dùng để xem các tài liệu hoặc tìm kiếm các tài nguyên trên World Wide Web.</li>
+        	<li>Một số trình duyệt thông dụng hiện nay:
+        		<ul type="circle" class="list_mt">
+        			<li>Chrome của Google.</li>
+        			<li>Internet Explorer (IE) có sẵn trong Microsoft Windows của Microsoft.</li>
+        			<li>Mozilla Firefox của Tập đoàn Mozilla.</li>
+                    <li>Netscape Navigator của Netscape</li>
+                    <li>Opera của Opera Software</li>
+        		</ul>
+        	</li>
+        </ul>
+        <h3>HTTP (HyperText Transfer Protocol)</h3>
+        <ul type="disc" class="list_mt">
+        	<li>Là giao thức chuyển giao siêu văn bản trên web.</li>
+        	<li>Giao thức này là tập hợp các qui định dùng để trao đổi các tài liệu (văn bản, hình ảnh, âm thanh, video, các tập tin đa truyền thông,…) giữa Web server và trình duyệt Web.</li>
+        </ul>
+        <h3>URL (Uniform Resource Locator)</h3>
+        <ul type="disc" class="list_mt">
+        	<li>Đường dẫn chỉ tới một trang web cụ thể trên Internet.</li>
+        	<li>Cú pháp đầy đủ: scheme://host [:port] [path[ ?querystring ] ]
+        		<ul type="circle" class="list_mt">
+        			<li>scheme: lọai dịch vụ Internet.</li>
+                    <li>host: địa chỉ máy chủ chứa tài nguyên.</li>
+                    <li>port: cổng dịch vụ trên máy chủ.</li>
+                    <li>path: đường dẫn và tên của tập tin tài nguyên trên máy chủ.</li>
+                    <li>querystring: các tham số được gửi kèm theo http.</li>
+                    <img src="imagine/url.png">
+        		</ul>
+        	</li>
+        </ul>
+        <h3>Web tĩnh</h3>
+        <ul type="disc" class="list_mt">
+        	<li>Là trang web được trình bày dưới dạng văn bản. Nội dung trong trang được tạo ra lúc thiết kế và không được thay đổi khi có người dùng truy cập.</li>
+        	<li>Được viết bằng ngôn ngữ HTML và không có kết nối với cơ sở dữ liệu (CSDL).</li>
+        	<li>Khi có nhu cầu xử lý trên trang web tĩnh, ta dùng ngôn ngữ Client-side script. Lập trình Client-side.</li>
+            <li>Quá trình xử lý chỉ xảy ra tại Web client</li>
+        </ul>
+        <h3>Đặc điểm khi xử lý tại Client</h3>
+        <ul type="disc" class="list_mt">
+        	<li>Nhanh, không mất thời gian để thể hiện kết quả lên trang web.</li>
+        	<li>Chỉ có thể thực hiện những xử lý đơn giản và độc lập.</li>
+        	<li>Không cần phải cài đặt phần mềm tại web server.</li>
+        	<li>Trình duyệt phải hỗ trợ ngôn ngữ script mà trang HTML đang sử dụng.</li>
+        	<li>Rất hữu ích cho DHTM</li>
+        </ul>
+        <h3>Web động</h3>
+        <ul type="disc" class="list_mt">
+        	<li>Là trang web có nội dung được lấy từ CSDL.</li>
+        	<li>Dùng ngôn ngữ Server-side script để xử lý.</li>
+        	<li>Quá trình xử lý xảy ra tại Web server. Lập trình Server-side.</li>
+        </ul>
+        <h3>Đặc điểm khi xử lý tại Server</h3>
+        <ul type="disc" class="list_mt">
+        	<li>Chậm, mất thời gian để thể hiện kết quả lên trang web.</li>
+        	<li>Có khả năng thực hiện những xử lý phức tạp và truy cập cơ sở dữ liệu.</li>
+        	<li>Trang web linh động, phục vụ đa yêu cầu của người dùng.</li>
+        	<li>Phải cài đặt phần mềm tại Web server.</li>
+        </ul>
+
+        <h3>Khi triển khai một ứng dụng web</h3>
+        <ul type="disc" class="list_mt">
+        	<li>Cần nhận biết bản chất của mỗi xử lý là nên thực hiện ở Client hay Server.</li>
+        	<li>Một website có thể chứa các trang web tĩnh và động.</li>
+        </ul>
+
+        <h3>Môi trường cài đặt</h3>
+        <ul type="disc" class="list_mt">
+        	<li>http://codepen.io/</li>
+        	<li>Notepad, Notepad++</li>
+        	<li>Macromedia Dreamweaver</li>
+        	<li>Visual Studio</li>
+        	<li>Sublime Text</li>
+        </ul><br>
+        <button><a href="#dautrang">Home</a></button>
+        <button><a href="http://localhost:8888">Trang chủ</a></button>
+
+    </div>
+    <div id="ad_right">
+      <div id="exit"><a href="#" onClick="hide()">Tắt quảng cáo[X]</a></div>
+      <div id="conten"><a href="https://www2.k12albemarle.org/Pages/default.aspx"><img src="file:///C:/Users/DINHNGHIA/Desktop/VDN_web/anh/mcps-small.png" width="200" height="auto"></a></div>
+      <div id="look"><a href="#" onClick="blook()">Xem quảng cáo</a></div>
+   </div>
+   <script>
+     function hide(){
+		 document.getElementById('exit').style.display="none";
+		 document.getElementById('conten').style.display="none";
+		 document.getElementById('look').style.display="block";
+	 }
+	function blook(){
+		document.getElementById('exit').style.display="block";
+		 document.getElementById('conten').style.display="block";
+		 document.getElementById('look').style.display="none";
+	}
+	</script>
+</body>
+</html>

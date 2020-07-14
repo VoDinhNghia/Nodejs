@@ -1,0 +1,315 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<title>Thông tin cá nhân</title>
+<style>
+	*{
+		margin: 0;
+		padding-top: 0;
+	}
+	a{
+		text-decoration: none;
+	}
+	img{
+		max-width: 100%;
+	}
+	body{
+		font-size: 14px;
+		background: #fff;
+		color: #333;
+		font-family: 'Roboto', sans-serif;
+	}
+	.container{
+		width: 1000px;
+		margin: 0 auto;
+	}
+	.clear{
+		clear: both;
+	}
+	.logo{
+		float: left;
+		width: 20%;
+	}
+	.tieude{
+		font-size: 25px;
+		text-align: center;
+		color: #00882D;
+		padding-top: 30px;
+	}
+
+	.thong_tin{
+		width: 100%;
+		float: left;
+		font-size: 17px;
+		padding: 30px 0px;
+		line-height: 30px;
+		height: 310px;
+		background-color: #CCF4D0;
+	}
+</style>
+</head>
+
+<body>
+  <div class="header">
+  	<div class="container">
+  		<div class="logo">
+    		  <a href="#">
+    		   	   <img src="imagine/logo_b.gif" alt="" width="150" height="80">
+    		   </a>
+    	</div><!--div of logo-->
+    	<div class="tieude">
+    		<p style="float: left">CHÀO MỪNG BẠN ĐẾN VỚI KHÓA HỌC CỦA CHÚNG TÔI!</p>
+        <!--
+    		<form name="form_tt" method="post" action="">
+    		<a href="http://localhost:8888">	<button type="submit" style="float: right;background-color: red;font-size: 16px;width: 32px; color: white; border-radius: 5px; margin-top: -25px" id="thoat"
+        >[X]</button></a>
+
+    		</form>
+        -->
+        <button id="dx_tt" onclick="return dangxuat()" style="float: right;background-color: red;font-size: 16px;width: 100px; height: 30px; color: white; border-radius: 5px; margin-top: 0px">Đăng xuất</button>
+				<script>
+
+             function dangxuat() {
+             	  //document.getElementById("dx_tt").close();
+								//alert();
+								window.close();
+
+
+             }
+				</script>
+    	</div>
+     <div class="clear"></div>
+  	</div>
+  </div>
+  <div class="contend">
+  	<div class="container">
+  		<div class="thong_tin">
+  			<h2 style="color: red; text-align: center">Thông tin học viên</h2><br>
+  			<div style="width: 50%; float: left; padding-left: 100px; height: 250px">
+  				<p>Họ và tên: Võ Đình Nghĩa</p>
+  				<p>Giới tính: Nam</p>
+  				<p>Ngày sinh: 18/08</p>
+  				<p>Địa chỉ: quận 9</p>
+  				<p>Khóa học: javascript</p>
+  				<p>Tình trạng: đang học</p>
+  				<p>Ngày đăng ký: 20/08/2018</p>
+  				<p>Ngày bắt đầu: 10/09/2018</p>
+  				<p>Đang tìm hiểu: Nodejs và Ứng dụng JS trong xử lý sự kiện</p>
+  			</div>
+  			<div style="width: 40%; float: right">
+  				<img src="imagine/a_daidien.jpg" width="90%" height="250" title="ảnh đại diện" style="border: 1px solid red; border-radius: 20px;">
+  			</div>
+  			<div class="clear"></div><br><hr><br>
+  			<table style="font-size: 16px; border: 1px solid white; background-color: #00882D; color: white"><span style="color: red; font-size: 20px">Bảng điểm</span> <br>
+   	                               <th style="border: 1px solid white; width: 100px">Stt
+
+   	                               </th>
+   	                               <th style="border: 1px solid white; width: 300px">Khóa học
+
+   	                               </th>
+   	                               <th style="border: 1px solid white; width: 300px">Điểm quá trình
+
+   	                               </th>
+   	                               <th style="border: 1px solid white; width: 300px">Điểm thi cuối kỳ
+
+   	                               </th>
+   	                               <th style="border: 1px solid white; width: 300px">Kết quả
+
+   	                               </th>
+   	                               <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">1</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center">HTML cơ bản (6 tuần)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center"></td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center"></td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">Đạt (đã được cấp chứng chỉ)</td>
+   	                               </tr>
+   	                               <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">2</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center">CSS (6 tuần)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center"></td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center"></td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">Đạt (đã được cấp chứng chỉ)</td>
+   	                               </tr>
+   	                               <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">3</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center">javascript cơ bản(12 tuần)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">Đang chờ cập nhật</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">Đang chờ cập nhật</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">Đang chờ cập nhật</td>
+   	                               </tr>
+																	 <tr id="themkh_moi" style="display: none">
+																			 <td style="border: 1px solid white; width: 100px; text-align: center">4</td>
+																			 <td style="border: 1px solid white; width: 300px; text-align: center">NodeJS</td>
+																			 <td style="border: 1px solid white; width: 100px; text-align: center">Đang chờ cập nhật</td>
+																			 <td style="border: 1px solid white; width: 100px; text-align: center">Đang chờ cập nhật</td>
+																			 <td style="border: 1px solid white; width: 100px; text-align: center">Đang chờ cập nhật</td>
+																		</tr>
+																		<tr id="themkh_moiasp" style="display: none">
+ 																			 <td style="border: 1px solid white; width: 100px; text-align: center">4</td>
+ 																			 <td style="border: 1px solid white; width: 300px; text-align: center">ASP.net</td>
+ 																			 <td style="border: 1px solid white; width: 100px; text-align: center">Đang chờ cập nhật</td>
+ 																			 <td style="border: 1px solid white; width: 100px; text-align: center">Đang chờ cập nhật</td>
+ 																			 <td style="border: 1px solid white; width: 100px; text-align: center">Đang chờ cập nhật</td>
+ 																		</tr>
+																		<tr id="themkh_moiphp" style="display: none">
+ 																			 <td style="border: 1px solid white; width: 100px; text-align: center">4</td>
+ 																			 <td style="border: 1px solid white; width: 300px; text-align: center">PHP</td>
+ 																			 <td style="border: 1px solid white; width: 100px; text-align: center">Đang chờ cập nhật</td>
+ 																			 <td style="border: 1px solid white; width: 100px; text-align: center">Đang chờ cập nhật</td>
+ 																			 <td style="border: 1px solid white; width: 100px; text-align: center">Đang chờ cập nhật</td>
+ 																		</tr>
+   	                               <div class="clear"></div>
+   		    	   </table>
+            <button id="dkkh_hv" onclick="return dangkikh_hv()" style="background-color: red;font-size: 16px;width: 200px; height: 30px; color: white; border-radius: 5px;">Đăng Kí thêm Khóa học</button><br>
+						<div id="dskh" style="width: 30%; height: 300px;  color: white; float: left; border: 1px solid red; text-align: center; display: none">
+                <a href="#" id="css" style="color: blue">Khóa học NodeJS</a><br>
+								<a href="#" id="js" style="color: blue">Khóa học PHP</a><br>
+								<a href="#" id="asp" style="color: blue">Khóa học ASP.net</a>
+						</div>
+						<div id="ctkhcss" style="width:69%; height: 300px;  background-color: #00882D; color: white; float: right; display: none">
+                <table>
+									<th style="border: 1px solid white; width: 300px">Lịch học
+
+									</th>
+									<th style="border: 1px solid white; width: 300px">Số tiền
+
+									</th>
+									<th style="border: 1px solid white; width: 300px">Ngày học
+
+									</th>
+									<th style="border: 1px solid white; width: 300px">Nhấn nút ok để ĐK
+
+									</th>
+									<tr>
+										 <td style="border: 1px solid white; width: 300px; text-align: center">2-4-6(7-10h tối)</td>
+										 <td style="border: 1px solid white; width: 300px; text-align: center">4.800.000đ(đã giảm)</td>
+										 <td style="border: 1px solid white; width: 300px; text-align: center">22/01/2019</td>
+										 <td style="border: 1px solid white; width: 300px; text-align: center"><button id="ok" onclick="return dkthem()">Ok</button></td>
+
+									</tr>
+
+								</table>
+
+						</div>
+						<div id="ctkhjs" style="width:69%; height: 300px;  background-color: #00882D; color: white; float: right; display: none">
+                <table>
+									<th style="border: 1px solid white; width: 300px">Lịch học
+
+									</th>
+									<th style="border: 1px solid white; width: 300px">Số tiền
+
+									</th>
+									<th style="border: 1px solid white; width: 300px">Ngày học
+
+									</th>
+									<th style="border: 1px solid white; width: 300px">Nhấn nút ok để ĐK
+
+									</th>
+									<tr>
+										 <td style="border: 1px solid white; width: 300px; text-align: center">3-5-7(7-9h tối)</td>
+										 <td style="border: 1px solid white; width: 300px; text-align: center">3.400.000đ(đã giảm)</td>
+										 <td style="border: 1px solid white; width: 300px; text-align: center">22/12/2018</td>
+										 <td style="border: 1px solid white; width: 300px; text-align: center"><button id="ok" onclick="return dkphp()">Ok</button></td>
+
+									</tr>
+
+								</table>
+
+						</div>
+						<div id="ctkhasp" style="width:69%; height: 300px;  background-color: #00882D; color: white; float: right; display: none">
+                <table>
+									<th style="border: 1px solid white; width: 300px">Lịch học
+
+									</th>
+									<th style="border: 1px solid white; width: 300px">Số tiền
+
+									</th>
+									<th style="border: 1px solid white; width: 300px">Ngày học
+
+									</th>
+									<th style="border: 1px solid white; width: 300px">Nhấn nút ok để ĐK
+
+									</th>
+									<tr>
+										 <td style="border: 1px solid white; width: 300px; text-align: center">3-5-7(7-9h tối)</td>
+										 <td style="border: 1px solid white; width: 300px; text-align: center">4.400.000đ(đã giảm)</td>
+										 <td style="border: 1px solid white; width: 300px; text-align: center">22/01/2018</td>
+										 <td style="border: 1px solid white; width: 300px; text-align: center"><button id="ok" onclick="return dkasp()">Ok</button></td>
+
+									</tr>
+
+								</table>
+
+						</div>
+						<script>
+							function dangkikh_hv() {
+								$("#dskh").show();
+							}
+							$("#css").click(function() {
+								$("#ctkhcss").show();
+								$("#ctkhjs").hide();
+							});
+							$("#js").click(function() {
+								$("#ctkhjs").show();
+								$("#ctkhcss").hide();
+							});
+							$("#asp").click(function() {
+								$("#ctkhjs").hide();
+								$("#ctkhcss").hide();
+								$("#ctkhasp").show();
+							});
+							function dkthem(){
+								alert("Bạn đã đăng kí thành công");
+
+								$("#ctkhcss").hide();
+								$("#ctkhjs").hide();
+								$("#dskh").hide();
+								$("#themkh_moi").show();
+								return false;
+							}
+							function dkasp(){
+								alert("Bạn đã đăng kí thành công");
+
+								$("#ctkhcss").hide();
+								$("#ctkhjs").hide();
+								$("#dskh").hide();
+								$("#themkh_moiasp").show();
+								return false;
+							}
+							function dkphp(){
+								alert("Bạn đã đăng kí thành công");
+
+								$("#ctkhcss").hide();
+								$("#ctkhjs").hide();
+								$("#dskh").hide();
+								$("#themkh_moiphp").show();
+								return false;
+							}
+
+						</script>
+						<div class="clear"></div>
+							 <br>
+   		    	<form name="form_danhgia" method="post" action="" style="border: 1px solid red; padding-bottom: 50px">
+   		    		<label class="luachon_dg" style="float: left; padding-left: 15px"> Mức độ hài lòng:
+                                <p style="padding-left: 40px; li"><input type="checkbox"/> Rất cao <span style="padding-left: 50px "><input type="checkbox"/> Cao</span><span style="padding-left: 50px "><input type="checkbox"/> Bình thường</span><span style="padding-left: 50px "><input type="checkbox"/> Thấp</span><span style="padding-left: 50px "><input type="checkbox"/> Không hài lòng</span> </p>
+
+                     </label><br> <div class="clear"></div>
+                     <label class="luachon_dg" style=" padding-left: 15px"> Gửi lời góp ý:<br> <br>
+                            <p style="padding-left: 50px"><textarea rows="5" cols="37" placeholder=" Mời bạn nhập thắc mắc..." id="gop_y" style=" border-radius: 5px; width: 70%; border: 1px solid red; padding: 10px"></textarea></p><br>
+					</label>
+  		    	     <label class="btn_dk">
+                              <span style="padding-left: 50px ">
+                                    <input type="submit" value="gửi" onClick="return form_dk()" style="width: 20%;font-size: 25px; margin-left: 10%; height: 40px; border-radius: 15px; background-color: #00882D; color: white; border: 1px solid red;float: left"/>
+                              </span>
+                                    <button onClick="return form_dk()" style="width: 20%;font-size: 25px; height: 40px; border-radius: 15px; background-color: #00882D; color: white; border: 1px solid red; margin-right: 20%">Hủy</button>
+                     </label>
+   		    	</form>
+  		</div>
+  	</div>
+  </div>
+
+</body>
+</html>

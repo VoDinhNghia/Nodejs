@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    float: none;
+}
+.clear{
+		clear: both;
+	}
+</style>
+</head>
+<body>
+
+<h3 style="color: green; float: left">Vui lòng nhập thông tin cần hướng dẫn phía bên dưới:</h3>
+<a href="http://localhost:8888" style="float: right; text-decoration: none; padding: 10px; color: red; width: 50px; font-size: 30px">[X]</a>
+<div class="clear"></div>
+<div class="container">
+  <form action="#">
+    <label for="ho_hd">Họ: </label>
+    <input type="text" id="ho_hd" name="ho" placeholder="họ của bạn..">
+
+    <label for="ten_hd">Tên: </label>
+    <input type="text" id="ten_hd" name="ten" placeholder="tên của bạn..">
+
+    <label for="quequan">Địa chỉ: </label>
+    <select id="quequan" name="quequan">
+      <option value="">Quận 9</option>
+      <option value="">Quảng Ngãi</option>
+      <option value="">HCM</option>
+      <option value="">Đồng Nai</option>
+      <option value="">Bình Định</option>
+    </select>
+
+    <label for="thongtin_nhap">Nhập tin nhắn vào đây:</label>
+    <textarea id="nhap_tn" name="nhap_tn" placeholder="nhập thông tin gì đó.." style="height:200px"></textarea>
+
+    <input type="submit" value="Gửi đi">
+  </form>
+</div>
+
+</body>
+</html>

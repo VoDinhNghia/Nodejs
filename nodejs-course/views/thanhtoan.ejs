@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+<title>Cổng thanh toán online</title>
+<style>
+    *{
+		margin: 0;
+		padding: 0;
+	}
+	img{
+		width: 100%;
+	}
+
+	.dk{
+    margin: 20px;
+    width: 800px;
+    border: 1px solid red;
+  }
+
+	</style>
+</head>
+
+<body>
+  <div id="dangki" class="dk">
+
+
+    <p class="dk_title" style="color: red; font-size: 20px; text-align: center; padding-top: 20px"> Vui lòng điền thông tin đầy đủ: </p>
+                       <br>
+                  <form method="post" class="form_tt" id="form_thanhtoan" name="formtt" action="#" onClick="return check_thanhtoan()" style="float: none; text-align: center; background-color: white; width: 100%;height: 550px">
+                    <label >
+                         <p style="color: black; font-size: 16px;padding-top: 20px; text-align: left; padding-left: 70px">Số tài khoản: </p><br>
+                         <input id="stk" type="text" autocomplete="on" name="sotaikhoan" placeholder="" value="" style="width: 80%; height: 30px; border-radius: 5px; padding-left: 15px; border: 1px solid red" /><br>
+                    </label>
+                    <label >
+                         <p style="color: black; font-size: 16px;padding-top: 20px; text-align: left; padding-left: 70px">Tên tài khoản: </p><br>
+                         <input id="ten_tk" type="text" autocomplete="on" name="tentk" placeholder="" value="" style="width: 80%; height: 30px; border-radius: 5px; padding-left: 15px; border: 1px solid red" /><br>
+                    </label>
+                          <label >
+                               <p style="color: black; font-size: 16px;padding-top: 20px; text-align: left; padding-left: 70px">Mã Xác nhận: </p><br>
+                               <input id="ma_xn" type="text" autocomplete="on" name="maxacnhan" placeholder="" value="" style="width: 80%; height: 30px; border-radius: 5px; padding-left: 15px; border: 1px solid red" /><br>
+                          </label>
+
+                          <label>
+                            <input type="submit" id="btn_thanhtoan" value="Thanh toán" onClick="return thanhtoan()" style="width: 50%;font-size: 25px;margin-top: 40px; margin-left: 20%; height: 40px; border-radius: 15px; background-color: #00882D; color: white; border: 1px solid red;float: left"/>
+
+                          </label>
+    </form>
+
+  </div>
+<script>
+
+  function thanhtoan() {
+    if(confirm("Bạn chắc chắc chưa?")==true){
+      alert("Bạn đã thanh toán thành công! vui lòng kiểm tra lại tài khoản!");
+      return false;
+    }else {
+      document.getElementById("form_thanhtoan").reset();
+    }
+
+  }
+
+</script>
+
+</body>
+</html>

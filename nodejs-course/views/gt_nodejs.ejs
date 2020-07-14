@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+<title>Giới thiệu về nodejs</title>
+<style>
+    *{
+		margin: 0;
+		padding: 0;
+	}
+	img{
+		width: 100%;
+	}
+
+	.container{
+		width: 1000px;
+		margin: 0 auto;
+		padding: 30px 0px;
+		background-color: #F1FCD6;
+	}
+	h1 {
+        font: 200 60px/1.2 'Merienda One', Helvetica, sans-serif;
+        color: rgba(0,0,0,0.7);
+        text-shadow: 3px 3px 3px #fff;
+    }
+	.decription{
+		width: 945px;
+		height: 50px;
+		border: 1px solid lightgray;
+		border-left: 4px solid red;
+		border-radius: 4px;
+		padding: 25px;
+
+		background-color: #FFDADB;
+	}
+	.list_mt{
+		padding: 10px;
+		padding-left: 30px;
+		line-height: 25px;
+	}
+	button{
+		width: 180px;
+		height: 30px;
+		display: inline-block;
+		background-color: red;
+		border: 1px solid red;
+		border-radius: 6px;
+	}
+	a{
+		text-decoration: none;
+		font-size: 20px;
+		color: white;
+	}
+
+	 #ad_right{
+		position: fixed;
+		bottom: 0;
+		right: 0;
+	}
+	#exit{
+		text-align: right;
+		font-size: 12px;
+	}
+	#exit a{
+		text-decoration: none;
+		padding: 2px 4px;
+		color: red;
+	}
+	#conten{
+		border: 1px solid #C0483C;
+	}
+	#look{
+		display: none;
+		text-align: right;
+		font-size: 12px;
+	}
+	#look a{
+		text-decoration: none;
+		padding: 2px 4px;
+		color: green;
+	}
+	.tv{
+		width: 250px;
+		height: 280px;
+		background-color: green;
+		border-radius: 5px;
+		padding: 15px;
+	}
+	</style>
+</head>
+
+<body>
+<div class="container">
+    	<h1 style="color: green; text-align: center" id="dautrang">GIỚI THIỆU VỀ KHÓA HỌC NODEJS</h1><br>
+    	<img src="imagine/logo8.png" width="100%" height="400" ><br>
+    	<p class="decription">Node.js là một hệ thống phần mềm được thiết kế để viết các ứng dụng internet có khả năng mở rộng, đặc biệt là máy chủ web. Chương trình được viết bằng JavaScript, sử dụng kỹ thuật điều khiển theo sự kiện,
+         nhập/xuất không đồng bộ để tối tiểu tổng chi phí và tối đại khả năng mở rộng. Node.js bao gồm có V8 JavaScript engine của Google, libUV, và vài thư viện khác.</p><br>
+    	<hr><br>
+    	<p style="padding-left: 15px">Đoạn code tạo server:<br>
+         <code>
+         var express = require("express");<br>
+         var app = express();<br>
+         app.use(express.static("public"));<br>
+         app.set("view engine", "ejs");<br>
+         app.set("views", "./views");<br>
+         var server=require("http").Server(app);<br>
+         server.listen(8888);<br>
+         app.get("/", function(request, response)  {<br>
+             response.render("index");<br>
+          });
+        </code>
+      </p><br>
+      <p>Chúng tôi chỉ giới thiệu sơ qua còn nhiều điều hay đang chờ bạn khám phá....</p>
+    	<h3 style="font-size: 16px; padding-left: 15px">Trong bài học này bạn sẽ học:</h3>
+    	<ul type="disc" class="list_mt">
+        <li>socket io</li>
+        <li>Viết web dựa trên mô hình MVC</li>
+        <li>Cách client gửi data lên server và server trả về data cho client.</li>
+    	</ul>
+    	<p style="padding-left: 15px; color: red">Để tìm hiểu sâu hơn hãy đăng kí tham gia khóa học cùng với chúng tôi! Rất hân hạnh được gặp mặt các bạn vào: </p><br>
+    	<table style="font-size: 16px; border: 1px solid white; background-color: #00882D; color: white ">
+   	                               <th style="border: 1px solid white; width: 100px">Stt
+
+   	                               </th>
+   	                               <th style="border: 1px solid white; width: 300px">Khóa học
+
+   	                               </th>
+   	                               <th style="border: 1px solid white; width: 300px">Giá tiền
+
+   	                               </th>
+   	                               <th style="border: 1px solid white; width: 300px">Thời gian học
+
+   	                               </th>
+   	                               <th style="border: 1px solid white; width: 300px">ngày bắt đầu
+
+   	                               </th>
+   	                               <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">1</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center">NodeJS(18 tuần)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">5.000.000đ( giảm 20% đối với học viên cũ )</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">thư 3-5-7(7h-10h tối)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">22-12-2018</td>
+   	                               </tr>
+
+   		    	              </table><br>
+   		    	              <span style="padding-left: 50px; padding-right: 50px">
+   		    	              	  <button><a href="http://localhost:8888">Trang chủ</a></button></span>
+                                  <button onClick="return dang_ky();"><a href="http://localhost:8888/dangki">Đăng ký</a></button>
+   		 <script>
+	            function dang_ky(){
+					
+
+				}
+	</script>
+
+
+
+    </div>
+    <div id="ad_right" >
+      <div id="exit"><a href="#" onClick="hide()">Ẩn tư vấn[X]</a></div>
+      <div id="conten">
+      	 <div class="tv">
+      	 	<form action="#">
+							<p style="color: white">Chào bạn! hãy đăng ký tham gia khóa học cùng chúng tôi.</p><br>
+							<p style="color: white">Bạn cần tư vấn gì không?</p>
+                            <p style="color: white">Hãy gửi tin nhắn tới chúng tôi để được tư vấn.</p><br>
+
+                         	<br>
+							 <textarea rows="5" cols="30" placeholder=" Mời bạn nhập thắc mắc..." id="thacmac" style="padding: 5px; border-radius: 5px"></textarea><br><br>
+
+                         	<span style="padding-left: 25px">
+                         	     <button style="color: red; background-color: white; width: 80%; height: 30px; border-radius: 6px" onClick="nop_tv()" id="sub1">Submit</button>
+                         	</span>
+                  </form>
+      	 </div>
+      </div>
+      <div id="look"><a href="#" onClick="blook()">Bạn cần tư vấn</a></div>
+   </div>
+   <script>
+     function hide(){
+		 document.getElementById('exit').style.display="none";
+		 document.getElementById('conten').style.display="none";
+		 document.getElementById('look').style.display="block";
+	 }
+	function blook(){
+		document.getElementById('exit').style.display="block";
+		 document.getElementById('conten').style.display="block";
+		 document.getElementById('look').style.display="none";
+	}
+	</script>
+</body>
+</html>

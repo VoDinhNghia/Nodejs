@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <meta charset="utf-8">
+    <title></title>
+  <head>
+    <title>Simple đk</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <body>
+    <h1>Hello people !</h1>
+    <input type="text" id="user" size="40"><br><br>
+    <input type="password" id="password" size="40"><br><br><br>
+    <input type="button" id="submit" value="Submit">
+    <script>
+      $(document).ready(function(){
+        var user,pass;
+        $("#submit").click(function(){
+          //var  user =document.getElementById("user").value;
+          //var  pass =document.getElementById("password").value;
+          user=$("#user").val();
+          pass=$("#password").val();
+      //    $.post("http://localhost:8888/dangki",{user: document.getElementById("user").value,password: document.getElementById("password").value}, function(data){
+      //      if(data==='done')
+      //        {
+      //          alert("đăng kí success");
+        //      }
+        //  });
+           axios({
+               method: 'post',
+               url: 'http://localhost:8888/dangki',
+               data: {
+                       user: document.getElementById("user").value,
+                       password: document.getElementById("password").value
+                }
+           });
+        });
+      });
+    </script>
+  </head>
+  </body>
+</html>

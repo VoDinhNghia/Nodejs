@@ -1,0 +1,1737 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>đề tài web1</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="socket.io/socket.io.js"></script>
+<script>
+var socket=io("http://localhost:8888");
+</script>
+<style>
+
+
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	a{
+		text-decoration: none;
+	}
+	img{
+		max-width: 100%;
+	}
+	body{
+		font-size: 14px;
+		background: #fff;
+		color: #333;
+		font-family: 'Roboto', sans-serif;
+	}
+	#date{
+		text-align: center;
+		background: #00882D;
+		color: white;
+		padding: 10px;
+		font-size: 30px;
+		width: 100%;
+		}
+
+
+
+	.container{
+		width: 1000px;
+		margin: 0 auto;
+	}
+	.clear{
+		clear: both;
+	}
+	.logo{
+		float: left;
+		width: 50%;
+	}
+	.acount{
+		float: left;
+		width: 50%;
+		text-align: right;
+		padding-top: 20px;
+	}
+	.top-header{
+		padding: 15px 0px;
+	}
+	.acount span{
+		color: #f36f21;
+		font-size: 20px;
+		font-weight: 600;
+
+	}
+	.acount a{
+		padding: 6px 16px;
+		font-size: 15px;
+		background: #ff9b39;
+		border-radius: 5px;
+		color: #fff;
+		text-transform: uppercase;
+		margin-left: 17px;
+	}
+	.main-menu .container ul li{
+		float: left;
+		list-style: none;
+		position: relative;
+	}
+	.main-menu{
+		background: #ededed;
+	}
+	.main-menu .container ul li a{
+		text-transform: uppercase;
+		color: #333;
+		font-size: 16px;
+		padding: 8px 18px;
+		display: inline-block;
+	}
+	.main-menu .container ul li.active a{
+		color: #fff;
+		background-color: green;
+	}
+	.main-menu .container ul li:hover a{
+		color: #fff;
+		background-color: green;
+	}
+	.main-menu .container ul li ul{
+		position: absolute;
+		width: 190px;
+		background-color: green;
+		visibility: hidden;
+		transition: all 0.5s;
+		opacity: 0;
+		top: 50px;
+	}
+	.main-menu .container ul li ul li a{
+		color: #fff;
+		text-transform: capitalize;
+	}
+	.main-menu .container ul li:hover ul{
+		visibility: visible;
+		opacity: 1;
+		top: 34px;
+		z-index: 9999;
+	}
+
+	/* xử lí trường tìm kiếm...*/
+	 * {
+            box-sizing: border-box;
+          }
+
+
+      input#myInput{
+          width: 200px;
+          height: 32px;
+          background: #2b303b;
+          border: none;
+          font-size: 15px;
+          color: white;
+          padding-left: 45px;
+         -webkit-border-radius: 5px;
+         -moz-border-radius: 5px;
+         border-radius: 5px;
+		 float: right;
+      }
+
+          #myUL {
+            list-style-type: none;
+            display: none;
+            padding: 0;
+            margin: 0;
+            width: 200px;
+			 float: right;
+
+          }
+
+          #myUL li a {
+            border: 1px solid #ddd;
+            margin-top: -1px;
+            background-color: #f6f6f6;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            color: white;
+            display: block;
+			  width: 200px;
+			  background-color: green;
+
+          }
+
+          #myUL li a.header {
+            background-color: #e2e2e2;
+            cursor: default;
+          }
+
+          #myUL li a:hover:not(.header) {
+            background-color: #eee;
+			  color: blue;
+          }
+
+	.al-bout{
+		margin: 30px 0px;
+	}
+	.al-bout h2{
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.al-contend .video{
+		width: 50%;
+
+		float: left;
+		margin-right: 20px;
+
+	}
+	/*
+	.al-contend .video:hover{
+		width: 100%;
+
+	} */
+	.al-contend .info{
+		font-size: 15px;
+		line-height: 20px;
+		margin-bottom: 20px;
+		text-align: justify;
+	}
+	.al-contend .info a{
+		background-color: #ff9b39;
+		color: #fff;
+		padding: 5px 10px;
+		display: inline-block;
+		margin-right: 10px;
+		border-radius: 3px;
+	}
+	.al-contend .info a.dk{
+		background: #e00;
+	}
+
+	.title-cs{
+		margin-bottom: 30px;
+	}
+	.title-cs a{
+		display: inline-block;
+		padding: 10px;
+		background: #fff;
+		color: green;
+		border-radius: 4px;
+		border: 1px solid #ededed;
+		font-size: 20px;
+	}
+	.title-cs a.active{
+		background: green;
+		color: #fff;
+	}
+	.contend-course{
+		margin: 0px -10px;
+	}
+	.contend-course .list{
+		width: 25%;
+
+		padding: 0px 10px;
+		border: 1px solid #ededed;
+		margin-bottom: 30px;
+		float: left;
+		box-sizing: border-box;
+	}
+	.contend-course .list h4{
+		text-align: center;
+		border: 1px solid #ededed;
+	}
+	.contend-course .list h4 a{
+		color: #333;
+	}
+	.contend-course .list img{
+		width: 100%;
+		margin-bottom: 0px;
+	}
+	.contend-course .list img:hover{
+		opacity: .8;
+	}
+	.tracuu .ds{
+		width: 33.3333%;
+		height: 120px;
+		background-color:#E8F397;
+		padding: 0px 10px;
+		border: 1px solid #ededed;
+		margin-bottom: 30px;
+		float: left;
+		box-sizing: border-box;
+	}
+	.tracuu .ds img{
+		border-radius: 50%;
+		float: left;
+		margin-right: 15px;
+	}
+	.tracuu .ds p{
+		padding: 10px;
+		font-size: 16px;
+	}
+	.tracuu .ds p a{
+		 color: red;
+		 font-size: 20px;
+
+	}
+	* {
+        box-sizing:border-box
+      }
+
+    .slider {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+		padding-top: 20px;
+
+      }
+
+    .mySlides {
+        display: none;
+          }
+	.dot {
+            cursor:pointer;
+            height: 13px;
+            width: 13px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+          }
+	.active, .dot:hover {
+            background-color: #717171;
+          }
+
+
+    .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 3s;
+            animation-name: fade;
+            animation-duration: 3s;
+          }
+
+     @-webkit-keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+          }
+
+     @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+          }
+	.Footer {
+        width: 100%;
+
+        min-height: 100px;
+        background: #ccc;
+    }
+    .footer-main {
+        width: 100%;
+        min-height: 180px;
+        background-color: #00882D;
+
+    }
+	.footer-colunm {
+        width:33.333333%;
+        float:left;
+	    padding: 15px;
+		color: white;
+    }
+	.footer-colunm img{
+		border-radius: 50%;
+		border: 1px solid red;
+
+	}
+	.footer-colunm a{
+		text-decoration: none;
+		color: white;
+	}
+    .footer-copyright {
+        width: 100%;
+        padding-top: 30px;
+        min-height: 90px;
+        background: #2525F7;
+		color: white;
+    }
+	#over {
+    display: none;
+    background: #000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 999;
+}
+	.login
+  {
+    background-color:#85B561;
+	 border-radius: 5px;
+    height:auto;
+    width:450px;
+	height: 300px;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:14px;
+    padding-bottom:5px;
+    display:none;
+    overflow:hidden;
+    position:absolute;
+    z-index:99999;
+    top:10%;
+    left:50%;
+
+}
+
+.login .login_title
+{
+    color:white;
+    font-size:16px;
+    padding:8px 0 5px 8px;
+    text-align:left;
+	float: left;
+}
+
+	.dk{
+		background-color:#85B561;
+	 border-radius: 5px;
+    height:auto;
+    width:650px;
+	height: auto;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size:14px;
+    padding-bottom:5px;
+    display:none;
+    overflow:hidden;
+    position:absolute;
+    z-index:99999;
+    top:10%;
+    left:30%;
+	}
+	.dk .dk_title
+{
+    color:white;
+    font-size:16px;
+    padding:8px 0 5px 8px;
+    text-align:left;
+	float: left;
+}
+
+
+
+
+
+	@media only screen and (max-width: 680px){
+       .al-contend .video{
+            float: none;
+            width: 100%;
+       }
+		.al-contend .info{
+			padding: 20px;
+			font-size: 16px;
+		}
+		.tuvan1{
+			top: 930px;
+			left: 30px;
+
+		}
+		.course .title-cs .lich_kg{
+
+			top: 840px;
+			left: 0;
+			height: 300px;
+		}
+		.course .title-cs .giangvien{
+
+			top: 840px;
+			left: 0;
+			height: 300px;
+		}
+		.contend-course .list{
+			float: left;
+			width: 500px;
+
+		}
+
+		.list img{
+			height: 300px;
+		}
+		.tracuu .ds{
+		   width:500px;
+		   height: 150px;
+		   background-color:#E8F397;
+		   padding: 0px 10px;
+		   border: 1px solid #ededed;
+		   margin-bottom: 30px;
+		   float: left;
+		   box-sizing: border-box;
+	    }
+
+		.footer-colunm{
+			float: none;
+			width: 100%;
+			height: 200px;
+			text-align: center;
+		}
+}
+	@media only screen and (min-width: 681px) and (max-width: 1024px) {
+
+
+		.course .title-cs .lich_kg{
+
+			top: 630px;
+			left: 0;
+			height: 300px;
+		}
+		.course .title-cs .giangvien{
+
+			top: 630px;
+			left: 0;
+			height: 300px;
+		}
+	}
+	@media only screen and (min-width: 681px) and (max-width: 800px) {
+
+		.tuvan1{
+			top: 735px;
+			left: 550px;
+		}
+		.course .title-cs .lich_kg{
+
+			top: 630px;
+			left: 0;
+			height: 300px;
+		}
+		.course .title-cs .giangvien{
+
+			top: 630px;
+			left: 0;
+			height: 300px;
+		}
+	}
+	 @media only screen and (min-width: 1025px) and (max-width: 1450px) {
+		.course .title-cs .lich_kg{
+
+			width: 1300px;
+			height: 300px;
+		}
+		.course .title-cs .giangvien{
+
+			width: 1300px;
+			height: 300px;
+		}
+	}
+
+</style>
+<script>
+//tạo hiệu ứng ảnh trái tim rơi trên trang web
+//<![CDATA[
+//var pictureSrc ="https://1.bp.blogspot.com/-CXx9jt2JMRk/Vq-Lh5fm88I/AAAAAAAASwo/XivooDn_oSY/s1600/hoamai.png";
+	var pictureSrc="https://dep.anh9.com/imgs/1418hinh-anh-trai-tim%20mau-do-trong-nhu-giot-nuoc.jpg";
+    var pictureWidth = 10; //chiều rộng snowflakes
+    var pictureHeight = 10; //chiều cao snowflakes
+    var numFlakes = 10; //số lượng snowflakes
+    var downSpeed = 0.03; //tốc độ rơi của snowflakes
+    var lrFlakes = 10;
+
+
+    if( typeof( numFlakes ) != 'number' || Math.round( numFlakes ) != numFlakes || numFlakes < 1 ) { numFlakes = 10; }
+
+        //
+    for( var x = 0; x < numFlakes; x++ ) {
+         if( document.layers ) {
+                 document.write('<layer id="snFlkDiv'+x+'"><imgsrc="'+pictureSrc+'"  height="'+pictureHeight+'"width="'+pictureWidth+'" alt="*" border="0"></layer>');
+         } else {
+                document.write('<div style="position:absolute; z-index:9999;"id="snFlkDiv'+x+'"><img src="'+pictureSrc+'"height="'+pictureHeight+'" width="'+pictureWidth+'" alt="*"border="0"></div>');
+           }
+     }
+
+        //
+     var xcoords = new Array(), ycoords = new Array(), snFlkTemp;
+     for( var x = 0; x < numFlakes; x++ ) {
+          xcoords[x] = ( x + 1 ) / ( numFlakes + 1 );
+         do { snFlkTemp = Math.round( ( numFlakes - 1 ) * Math.random() );
+         }
+		 while( typeof( ycoords[snFlkTemp] ) == 'number' );
+               ycoords[snFlkTemp] = x / numFlakes;
+      }
+
+       //hiệu ứng animate
+      function flakeFall() {
+           if( !getRefToDivNest('snFlkDiv0') ) { return; }
+           var scrWidth = 0, scrHeight = 0, scrollHeight = 0, scrollWidth = 0;
+        //
+           if( typeof( window.innerWidth ) == 'number' ) { scrWidth = window.innerWidth; scrHeight = window.innerHeight; } else {
+           if( document.documentElement && (document.documentElement.clientWidth         ||document.documentElement.clientHeight ) ) {
+                   scrWidth = document.documentElement.clientWidth; scrHeight = document.documentElement.clientHeight; } else {
+           if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+                   scrWidth = document.body.clientWidth; scrHeight = document.body.clientHeight; } } }
+           if( typeof( window.pageYOffset ) == 'number' ) { scrollHeight = pageYOffset; scrollWidth =    pageXOffset; } else {
+           if( document.body && ( document.body.scrollLeft ||document.body.scrollTop ) ) { scrollHeight = document.body.scrollTop;scrollWidth = document.body.scrollLeft; } else {
+           if(document.documentElement && (document.documentElement.scrollLeft ||document.documentElement.scrollTop ) ) { scrollHeight =document.documentElement.scrollTop; scrollWidth =document.documentElement.scrollLeft; } }
+           }
+        //di chuyển của snowflakes
+        for( var x = 0; x < numFlakes; x++ ) {
+             if( ycoords[x] * scrHeight > scrHeight - pictureHeight ) { ycoords[x] = 0; }
+             var divRef = getRefToDivNest('snFlkDiv'+x); if( !divRef ) { return; }
+             if( divRef.style ) { divRef = divRef.style; } var oPix = document.childNodes ? 'px' : 0;
+             divRef.top = ( Math.round( ycoords[x] * scrHeight ) + scrollHeight ) + oPix;
+             divRef.left = ( Math.round( ( ( xcoords[x] * scrWidth ) - (pictureWidth / 2 ) ) + ( ( scrWidth / ( ( numFlakes + 1 ) * 4 ) ) * (Math.sin( lrFlakes * ycoords[x] ) - Math.sin( 3 * lrFlakes * ycoords[x]) ) ) ) + scrollWidth ) + oPix;
+             ycoords[x] += downSpeed;
+         }
+      }
+
+     //
+      function getRefToDivNest(divName) {
+           if( document.layers ) { return document.layers[divName]; }
+           if( document[divName] ) { return document[divName]; }
+           if( document.getElementById ) { return document.getElementById(divName); }
+           if( document.all ) { return document.all[divName]; }
+              return false;
+       }
+
+      window.setInterval('flakeFall();',100);
+      //]]>
+</script>
+
+</head>
+
+<body >
+<!-- tạo dòng tiêu đề ngày tháng năm -->
+  <div class="container">
+
+   <i><marquee id="date"></marquee></i></div>
+   <script>
+	    var d=new Date();
+		var ngay=["chủ nhật","thứ hai","thứ ba","thứ tư","thứ năm","thứ sáu","thứ bảy"];
+		var thang=["1","2","3","4","5","6","7","8","9","10","11","12"];
+	    var greeting;
+        var time = new Date().getHours();
+        if (time < 8) {
+                   greeting = "Chào buổi sáng! ";
+            } else if (time < 19) {
+                   greeting = "chúc một ngày an lành!";
+            } else if(time <23) {
+                   greeting = "chúc buổi tối vui vẻ!";
+           }
+	   else{
+		           greeting="Chúc ngủ ngon! ";
+	   }
+
+		document.getElementById("date").innerHTML= d.getHours()+":"+d.getMinutes()+":"+d.getSeconds()+ "   "+ greeting + " "  + ngay[d.getDay()] + " ngày " + d.getDate()
+        + " tháng " + thang[d.getMonth()] + " năm " + d.getFullYear()  ;
+
+	</script>
+    <div class="header" >
+    	 <div class="top-header"><!--div của top-header -->
+    		   <div class="container">
+    		   	    <div class="logo"><!--div của logo-->
+    		   	    	<a href="#">
+    		   	    		<img src="imagine/logo_b.gif" alt="" width="150" height="80" style="border-radius: 8px">
+    		   	    	</a>
+    		   	    </div><!--div của logo-->
+
+    		   	    <div class="acount">
+    		   	    	<span><img src="imagine/phone.png" alt="icon" width="20" height="20"> 0365572875</span>
+    		   	    	<a href="http://localhost:8888/dangki" class="reges">Đăng ký</a>
+						<div id="dangki" class="dk">
+
+						<!-- sau khi đăng kí xong hiển thị lên một bảng chọn khóa học hoặc khi user lướt chuột thấy khóa học nào ưng ý kích chuột vào nút đk -> hiển thị form đk này phía dưới form dk có 2 lựa chọn or học online or học tại lớp -->
+							<p class="dk_title" style="color: red; font-size: 20px"> Đăng kí học</p>
+                                 <a href="#" class="dong_dk" id="dong_dk"  style="padding: 0px; color: red; ">[X]</a><br><br>
+                            <form method="post" class="dk-content" id="form_dk" name="formdkmh" action="http://localhost:8888" onClick="return check_dk()" style="float: none; text-align: center; background-color: white; width: 100%;height: 550px">
+                                 <label class="ten_dk">
+                                         <p style="color: black; font-size: 16px;padding-top: 20px; text-align: left; padding-left: 70px">Họ và tên</p><br>
+                                         <input id="ten_dk" type="text" autocomplete="on" name="ten_dk" placeholder="Họ tên đầy đủ" value="" style="width: 80%; height: 30px; border-radius: 5px; padding-left: 15px; border: 1px solid red" /><br>
+                                    </label>
+                                    <label class="mk_dk">
+                                         <p style="color: black; font-size: 16px;padding-top: 20px; text-align: left; padding-left: 70px">Mật khẩu</p><br>
+                                         <input id="mk_dk" type="password" autocomplete="on" name="mk_dk" placeholder="mật khẩu" value="" style="width: 80%; height: 30px; border-radius: 5px; padding-left: 15px; border: 1px solid red" /><br>
+                                         <p style="color: black; font-size: 16px;padding-top: 20px; text-align: left; padding-left: 70px">Nhập lại mật khẩu</p><br>
+                                         <input id="remk_dk" type="password" autocomplete="on" name="re	mk_dk" placeholder="nhập lại mật khẩu" value="" style="width: 80%; height: 30px; border-radius: 5px; padding-left: 15px; border: 1px solid red" /><br>
+
+                                    </label>
+                                    <label class="email_dk">
+                                         <p style="color: black; font-size: 16px;padding-top: 20px; text-align: left; padding-left: 70px">Email</p><br>
+                                         <input id="email_dk" type="email" autocomplete="on" name="email_dk" placeholder="địa chỉ email" value="" style="width: 80%; height: 30px; border-radius: 5px; padding-left: 15px; border: 1px solid red" /><br>
+                                    </label>
+																		<label class="sdt_dk">
+                                         <p style="color: black; font-size: 16px;padding-top: 20px; text-align: left; padding-left: 70px">Số điện thoại: </p><br>
+                                         <input id="sdt_dk" type="tel" autocomplete="on" name="sdt" placeholder="vd: 0365572875" value="" style="width: 80%; height: 30px; border-radius: 5px; padding-left: 15px; border: 1px solid red" /><br>
+                                    </label>
+                                <!--   <label class="gt_dk">
+                                         <p style="color: black; font-size: 16px;padding-top: 20px; text-align: left; padding-left: 70px; float: left; width: 50%">Giới tính :  <input type="radio" name="gt" value="Nam"/> Nam <input type="radio" value="Nữ" name="gt"/> Nữ</p>
+                                         <p style="color: black; font-size: 16px;padding-top: 20px; text-align: left; float: left; width: 50%">Ngày sinh: <input type="date" placeholder="" style="border-radius: 5px;"/></p>
+
+                                    </label>
+                                     <label class="luachon_dk">
+                                         <p style="color: black; font-size: 16px;padding-top: 20px; text-align: left; padding-left: 70px; float: left; width: 50%"><input type="checkbox"/> Học online</p>
+                                        <p style="color: black; font-size: 16px;padding-top: 20px; text-align: left; float: left; width: 50%"><input type="checkbox"/> Học tại lớp</p>
+
+                                    </label><br> -->
+                                    <label class="btn_dk">
+                                    	<input type="submit" id="btndk" value="Đăng ký" onClick="return dangkikh()" style="width: 50%;font-size: 25px;margin-top: 40px; margin-left: 20%; height: 40px; border-radius: 15px; background-color: #00882D; color: white; border: 1px solid red;float: left"/>
+
+                                    </label>
+							</form>
+
+						</div>
+
+						<script>
+//javascrip  xử lý form đăng ký
+            function check_dk() {
+
+							var hoten=document.getElementById("ten_dk").value;
+							var matkhau=document.getElementById("mk_dk").value;
+							var rematkhau=document.getElementById("remk_dk").value;
+							var email=document.getElementById("email_dk").value;
+              var sdt=document.getElementById("sdt_dk").value;
+
+							if(hoten==""){
+								//alert("Hãy nhập họ tên đầy đủ!");
+
+								return false;
+							}
+							if(matkhau.length<=6){
+							//	alert("Hãy nhập mật khẩu nhiều hơn 6 kí tự");
+								return false;
+
+							}
+							if(matkhau!=rematkhau){
+							//	alert("Vui lòng nhập lại mật khẩu giống như trên!");
+								return false;
+							}
+
+							var check_email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+							 if (!check_email.test(email_dk.value)) {
+										//alert('Hãy nhập địa chỉ email hợp lệ.\nExample@gmail.com');
+										 email_dk.focus;
+										 return false;
+									 }
+
+
+
+/*
+								 if(confirm("Bạn có chắc là muốn đăng ký?")==true){
+ 	                // $(".lich_kg").show();
+ 									 document.getElementById("form_dk").reset();
+ 									 $(".chon_kh").show();
+
+ 									 $(document).ready(function(){
+ 																				$("#an_kh").click(function(){
+ 																				$(".chon_kh").hide();
+ 																		});
+ 							 });
+
+
+ 									//action("http://localhost:8888");
+ 									$("#dangki").hide();
+ 									$("#over").hide();
+
+ 									 //confirm("Hãy nhấn vào nút OK để tiếp tục");
+ 										return false;
+ 									 }
+ 								 else{
+ 									 document.getElementById("form_dk").reset();
+ 										 $("#dangki").hide();
+ 										 $("#over").hide();
+ 										 return false;
+ 										 }
+
+
+*/
+        //đoạn code gửi thông tin học viên đăng ký lên server
+                $("#btndk").click(function(){
+                   	socket.emit("dang-ki-hoc-vien", $("#email_dk").val());
+
+                 });
+								 socket.on("dki-thatbai", function() {
+									 $(".chon_kh").hide();
+								 	alert("Đã có người đăng ký tên này rồi!");
+									return false;
+								 });
+
+								 socket.on("server-send-danhsach-Users", function(d) {
+
+
+								 });
+
+								 socket.on("dki-thanhcong", function(d) {
+
+								 });
+// sau khi điền các trường thông tin trên form đăng ký và nhấn vào button đăng ký
+                 $("#btndk").click(function() {
+
+
+// hiển thị form xác nhận nếu kích vào ok
+									 if(confirm("Bạn có chắc là muốn đăng ký?")==true){
+										// $(".lich_kg").show();
+										//reset lại form đăng ký
+										 document.getElementById("form_dk").reset();
+										 // ẩn trò chuyện nhóm
+										 $(".trochuyen").hide();
+										 //hiển thị table chọn khóa học ở dòng 1299
+										 $(".chon_kh").show();
+                    // xử lí nút thoát trong table chọn khóa học.
+										 $(document).ready(function(){
+																					$("#an_kh").click(function(){
+																					$(".chon_kh").hide();
+																			});
+								 });
+
+
+										//action("http://localhost:8888");
+										$("#dangki").hide();
+										$("#over").hide();
+
+										 //confirm("Hãy nhấn vào nút OK để tiếp tục");
+											return false;
+										 }
+									 else{
+										 document.getElementById("form_dk").reset();
+											 $("#dangki").hide();
+											 $("#over").hide();
+											 return false;
+											 }
+
+                  });
+
+									 return false;
+            }
+
+
+
+						  /* function formdk(){
+								 window.location.assign("form_dk.html");
+			                        //var 	window_name=window.open("form_dk.html","window_name","toolbar=yes,scrollbars=yes,resizable=yes,top=100,left=300,width=800,height=500");
+							 }
+							*/
+                              $(document).ready(function() {
+                                 $('a.reges').click(function() {
+
+                             //lấy giá trị thuộc tính href - chính là phần tử "#login-box"
+                                 var register = $(this).attr('href');
+
+                            //cho hiện hộp đăng nhập trong 300ms
+                                 $(register).fadeIn("slow");
+
+                            // thêm phần tử id="over" vào sau body
+                                 $('body').append('<div id="over"></div>');
+                                 $('#over').fadeIn(300);
+
+                                 return false;
+                             });
+
+                          // khi click đóng hộp thoại
+                             $(document).on('click', "a.dong_dk, #over", function() {
+                                 $('#over, .dk').fadeOut(300 , function() {
+                                      $('#over').remove();
+                                 });
+                                 return false;
+                             });
+
+                         });
+
+
+
+
+						</script>
+
+
+
+    		   	    <!--	 <a href="#" class="btn2" onClick="return formdn()">Đăng nhập</a> -->
+
+							 <a href="http://localhost:8888/dangnhap" class="login-window button">Đăng nhập</a>
+                             <div id="login-box" class="login">
+                                 <p class="login_title" style="color: red; font-size: 20px"> Đăng nhập</p>
+                                 <a href="#" class="close" id="close"  style="padding: 0px; color: red; ">[X]</a><br><br><br>
+
+                               <form method="post" action="http://localhost:8888" class="login-content" id="login" action="" onClick="return check_dn();" style="float: none; text-align: center; background-color: white">
+
+									            <label class="username">
+                                         <span style="color: green; font-size: 16px">Tên đăng nhập</span><br><br>
+                                         <input id="username" type="email" autocomplete="on" name="username" placeholder="tên đăng nhập" value="" style="width: 80%; height: 30px; border-radius: 5px; padding-left: 15px; border: 1px solid red" /><br>
+                                    </label>
+                                    <label class="password">
+                                         <span style="color: green; font-size: 16px;">Mật khẩu</span><br><br>
+                                         <input id="password" type="password" name="password" placeholder="mật khẩu" value="" style="width: 80%; height: 30px; border-radius: 5px; padding-left: 15px; border: 1px solid red"/>
+                                    </label><br><br>
+                                         <input value="Đăng nhập" class="button submit-button" type="submit" style="background-color: green; font-size: 16px; width: 180px; height: 40px; color: white; border: 1px solid red; border-radius: 8px;"/><br><br>
+
+                                        <a class="forgot" href="#" style="background-color: white; font-size: 12px; color: #00882D; border: 1px solid red" onClick="forget_mk();">Quên mật khẩu?</a><br>
+
+                                </form>
+
+                               <script>
+								     function check_dn(){
+
+										 var matkhau= document.getElementById("password").value;
+										 var tendn = document.getElementById('username').value;
+
+                                        /* var check_email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+                                         if (!check_email.test(tendn.value)) {
+                                              alert('Hãy nhập địa chỉ email hợp lệ.\nExample@gmail.com');
+                                               tendn.focus;
+                                               return false;
+                                             } */
+										 if(tendn!="a@gmail.com"){
+											// alert("Tên đăng nhập phải là a@gmail.com!");
+											if (tendn=="") {
+												//alert("Mời bạn nhập vào gmail!");
+												return false;
+											}
+											if (matkhau < 6) {
+												alert("Mời bạn nhập vào mật khẩu");
+												return false;
+
+
+										 }
+										 if(confirm("Bạn có chắc là muốn đăng nhập?")==true){
+											 window.open("http://localhost:8888/thongtinhv","hv");
+												//action("http://localhost:8888");
+												document.getElementById("login").reset();
+												$("#login-box").hide();
+												$("#over").hide();
+
+												 //confirm("Hãy nhấn vào nút OK để tiếp tục");
+													return false;
+												 }
+											 else{
+													 document.getElementById("login").reset();
+													 return false;
+													 }
+
+											 return false;
+
+
+									 }
+
+										 if (matkhau != "nghia123") {
+                                             // alert("password phải là nghia123");
+
+                                              return false;
+                                          }
+
+
+
+			                             if(confirm("Bạn có chắc là muốn đăng nhập?")==true){
+																		window.open("http://localhost:8888/thongtin_hv","hv");
+																		 //action("http://localhost:8888");
+																		 document.getElementById("login").reset();
+																		 $("#login-box").hide();
+																		 $("#over").hide();
+
+			                              	//confirm("Hãy nhấn vào nút OK để tiếp tục");
+											                 return false;
+		                                 	}
+		                              	else{
+			                                	document.getElementById("login").reset();
+			                                	return false;
+		                                  	}
+										 return false;
+
+									 }
+									function forget_mk(){
+										var matkhau= document.getElementById("password").value;
+										if(matkhau!="nghiadeptrai"){
+										//	alert("Mật khẩu của bạn đã được gửi qua gmail!");
+											prompt("Hãy nhập vào địa chỉ gmail của bạn để lấy lại mật khẩu!");
+											return false;
+
+
+										}
+
+									}
+
+								 </script>
+                             </div>
+    		   	    	<script>
+						    /* function formdn(){
+								 window.location.assign("form_dn.html");
+			                       // var 	window_name=window.open("form_dn.html","window_name","toolbar=yes,scrollbars=yes,resizable=yes,top=200,left=500,width=400,height=400");
+							 } */
+							$(document).ready(function() {
+                                 $('a.login-window').click(function() {
+
+                             //lấy giá trị thuộc tính href - chính là phần tử "#login-box"
+                                 var loginBox = $(this).attr('href');
+
+                            //cho hiện hộp đăng nhập trong 300ms
+                                 $(loginBox).fadeIn("slow");
+
+                            // thêm phần tử id="over" vào sau body
+                                 $('body').append('<div id="over"></div>');
+                                 $('#over').fadeIn(300);
+
+                                 return false;
+                             });
+
+                          // khi click đóng hộp thoại
+                             $(document).on('click', "a.close, #over", function() {
+                                 $('#over, .login').fadeOut(300 , function() {
+                                      $('#over').remove();
+                                 });
+                                 return false;
+                             });
+
+                         });
+						</script>
+					</div><!--div của acount-->
+
+    		   	    <div class="clear"></div>
+
+    		   </div><!--div của container-->
+
+    	 </div><!--div của top-header-->
+    	 <div class="container">
+    	 <div class="main-menu">
+   	 	     <div class="container">
+    	 	   <ul>
+    	 	   	   <li  class="active"><a href="#trangchu">Trang chủ</a></li>
+    	 	   	   <li><a href="http://localhost:8888/gioithieu" >Giới thiệu</a></li>
+    	 	   	   <li>
+   	 	   	           <a href="#">Khóa học</a>
+    	 	   	       <ul>
+    	 	   	       	  <li><a href="http://localhost:8888/gt_html">Khóa học HTML</a></li>
+    	 	   	       	  <li><a href="http://localhost:8888/gt_css">Khóa học CSS</a></li>
+    	 	   	       	  <li><a href="http://localhost:8888/gt_jq">Khóa học JQuery</a></li>
+    	 	   	       	  <li><a href="http://localhost:8888/gt_js">Khóa học Javascript</a></li>
+											<li><a href="http://localhost:8888/gt_aj">Khóa học Ajax</a></li>
+											<li><a href="http://localhost:8888/gt_php">Khóa học PHP</a></li>
+											<li><a href="http://localhost:8888/gt_nodejs">Khóa học NodeJS</a></li>
+											<li><a href="http://localhost:8888/gt_bt">Khóa học Boostrap</a></li>
+    	 	   	       </ul>
+    	 	   	   </li>
+    	 	   	   <li>
+    	 	   	       <a href="#">Dịch vụ</a>
+    	 	   	       <ul>
+    	 	   	          <li><a>-  Giảm 20% đối với học viên đã đăng kí khóa học.<br><br>
+											-  Giảm 10% cho sinh viên.<br><br>
+										-  Tặng 500k cho nhóm đăng kí ( từ 2 người trở lên ).</a></li>
+
+
+    	 	   	       </ul>
+    	 	   	   </li>
+    	 	   	   <li><a href="http://localhost:8888/thanhtoan">Thanh toán</a></li>
+    	 	   	   <li><a href="http://localhost:8888/lienhe1">Hướng dẫn</a></li>
+    	 	   	   <div class="box_search">
+
+                         <span class="icon_search"><i class="search"></i></span>
+												<form action="#" id="formtk">
+                         <input type="search" id="myInput" placeholder="Tìm kiếm..." title="Tìm khóa học và giảng viên" onClick="return timkiem()"/>
+											 </form>
+                         <ul id="myUL">
+
+                               <li><a href="#" onclick="return html();">HTML cơ bản</a></li>
+                               <li><a href="#" onclick="return css();">CSS cơ bản</a></li>
+                               <li><a href="#" onclick="return js();">javascrip cơ bản</a></li>
+                               <li><a href="#" onclick="return jq();">jquery cơ bản</a></li>
+                               <li><a href="#" onclick="return php();">PHP</a></li>
+                               <li><a href="#" onclick="return bt();">Boostrap</a></li>
+                               <li><a href="#" onclick="return aj();">Ajax</a></li>
+                               <li><a href="#" onclick="return nodejs();">Nodejs</a></li>
+
+                               <li><a href="#" id="gvkh">A</a></li>
+                               <li><a href="#" id="gvkhna">Nguyễn văn A</a></li>
+                               <li><a href="#" id="gvkhb">Nguyễn B</a></li>
+															 <li><a href="http://viettuts.vn/lap-trinh-mang-voi-java/giao-thuc-tcp-ip">TCP/IP</a></li>
+															 <li><a href="http://notes.viphat.work/tong-quan-ve-tcp-ip-va-http">giao thức http</a></li>
+
+
+                          </ul>
+
+             <script>
+									 function nodejs() {
+									 	  window.open("http://localhost:8888/tim_nodejs","","width=700,height=350,resizable,scrollbars,status, top=200, left=150");
+									 }
+									 function html() {
+									 	  window.open("http://localhost:8888/tim_html","","width=700,height=350,resizable,scrollbars,status, top=200, left=150");
+									 }
+									 function css() {
+									 	  window.open("http://localhost:8888/tim_css","","width=700,height=350,resizable,scrollbars,status, top=200, left=150");
+									 }
+									 function js() {
+									 	  window.open("http://localhost:8888/tim_js","","width=700,height=350,resizable,scrollbars,status, top=200, left=150");
+									 }
+									 function jq() {
+									 	  window.open("http://localhost:8888/tim_jq","","width=700,height=350,resizable,scrollbars,status, top=200, left=150");
+									 }
+									 function php() {
+									 	  window.open("http://localhost:8888/tim_php","","width=700,height=350,resizable,scrollbars,status, top=200, left=150");
+									 }
+									 function bt() {
+									 	  window.open("http://localhost:8888/tim_bt","","width=700,height=350,resizable,scrollbars,status, top=200, left=150");
+									 }
+									 function aj() {
+									 	  window.open("http://localhost:8888/tim_aj","","width=700,height=350,resizable,scrollbars,status, top=200, left=150");
+									 }
+
+									 $("#gvkh").click(function() {
+										   $(".giangvien").animate({
+ 										        height: 'toggle'
+ 									    });
+									  //	document.getElementById("formtk").reset();
+									 });
+									 $("#gvkhna").click(function() {
+										   $(".giangvien").animate({
+ 										        height: 'toggle'
+ 									    });
+									  //	document.getElementById("formtk").reset();
+									 });
+									 $("#gvkhb").click(function() {
+										   $(".giangvien").animate({
+ 										        height: 'toggle'
+ 									    });
+									  //	document.getElementById("formtk").reset();
+									 });
+
+					  // lấy thẻ input
+                      var input = document.getElementById("myInput");
+                      // định nghĩa hàm xử lý myFunction
+                      function myFunction() {
+                            var filter, ul, li, a, i;
+                       // lấy giá trị người dùng nhập
+                            filter = input.value.toUpperCase();
+                            ul = document.getElementById("myUL");
+                            li = ul.getElementsByTagName("li");
+                       // Nếu filter không có giá trị thị ẩn phần kết quare\
+                           if (!filter) {
+                                 ul.style.display = "none";
+                           }else{
+                      // lặp qua tất cả các thẻ li chứa kết quả
+                               for (i = 0; i < li.length; i++) {
+                      // lấy thẻ a trong các thẻ li
+                                   a = li[i].getElementsByTagName("a")[0];
+                      // kiểm tra giá trị nhập có tôn tại trong nội dung thẻ a
+                                   if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                       //nếu có hiển thị phàn tử ul và các thẻ li đó
+                                      ul.style.display = "block";
+                                     li[i].style.display = "";
+                                  } else {
+                         // nếu không ẩn các thẻ li
+                                  li[i].style.display = "none";
+
+                }
+            }
+          }
+      }
+      //gán sự kiện cho thẻ input
+      input.addEventListener("keyup", myFunction);
+				   </script>
+
+                   </div>
+    	 	   	   <div class="clear"></div>
+    	 	   </ul>
+
+    	 	 </div>
+    	 </div><!--div của main-menu-->
+    	 </div>
+
+    </div><!--div của header-->
+
+    <div class="contend">
+    	<div class="slider">
+    		<div class="container">
+    	 	     <div class="mySlides fade">
+                    <img src="imagine/a4.jpg" style="width:100%; height: 450px">
+
+                 </div>
+
+                 <div class="mySlides fade">
+                    <img src="imagine/a1.jpg" style="width:100%; height: 450px">
+
+                 </div>
+
+                 <div class="mySlides fade">
+                    <img src="imagine/a2.jpg" style="width:100%;height: 450px">
+
+                 </div>
+                 <div class="mySlides fade">
+                    <img src="imagine/a3.jpg" style="width:100%;height: 450px">
+
+                 </div>
+                 <br>
+
+                 <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                 </div>
+           <script>
+                     //khai báo biến slideIndex đại diện cho slide hiện tại
+                      var slideIndex;
+                    // KHai bào hàm hiển thị slide
+                 function showSlides() {
+                      var i;
+                      var slides = document.getElementsByClassName("mySlides");
+                      var dots = document.getElementsByClassName("dot");
+                      for (i = 0; i < slides.length; i++) {
+                          slides[i].style.display = "none";
+                      }
+                      for (i = 0; i < dots.length; i++) {
+                          dots[i].className = dots[i].className.replace(" active", "");
+                      }
+
+                      slides[slideIndex].style.display = "block";
+                      dots[slideIndex].className += " active";
+                     //chuyển đến slide tiếp theo
+                      slideIndex++;
+                     //nếu đang ở slide cuối cùng thì chuyển về slide đầu
+                      if (slideIndex > slides.length - 1) {
+                           slideIndex = 0
+                             }
+                     //tự động chuyển đổi slide sau 5s
+                      setTimeout(showSlides, 7000);
+               }
+                     //mặc định hiển thị slide đầu tiên
+                     showSlides(slideIndex = 0);
+
+
+               function currentSlide(n) {
+                      showSlides(slideIndex = n);
+               }
+             </script>
+    	 	 </div>
+    	</div>
+    	<div class="al-bout" id="trangchu">
+    		<div class="container">
+    		    <h2 class="title" style="color: green">Giới thiệu</h2>
+    			<div class="al-contend">
+    				<div class="video">
+    					<iframe width="100%" height="300" src="gtjs.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    				</div>
+    				<div class="info">
+							<p>Khóa học lập trình web sẽ cung cấp cho bạn được những kiến thức về ngôn ngữ HTML, CSS, Java Script, mysql, nodejs, jquery và biết cài đặt, sử dụng các công cụ để thiết kế và xây dựng các trang web, cũng như hiểu được cơ chế vận hành web động với nodejs, MySQL… Tại đây các bạn sẽ được học lí thuyết đi kèm với dự án thực tế giúp mở rộng và nâng cao những kiến thức về lập trình phát triển các ứng dụng web với NodeJS theo hướng toàn diện và chuyên nghiệp đáp ứng nhu cầu của các nhà tuyển dụng và khách hàng.</p>
+							<p>Học lập trình không khó. Quan trọng là tìm được phương pháp học hiệu quả, chăm chỉ và nỗ lực hết khả năng của mình.</p>
+              <p>Khi vấn đề chưa được giải quyết thì câu hỏi luôn luôn xuất hiện trong đầu bạn. (Võ Đình Nghĩa.)</p>
+							<br>
+							<!--
+    					<p>CSS viết tắt của từ Cascading Style Sheets, ý nghĩa nó là gì chúng ta không cần quan tâm để làm gì mà chỉ cần biết CSS là một file có phần mở rộng là .css, nhiệm vụ của nó là tách riêng phần định dạng (style) ra khỏi nội dung trang HTML.</p>
+    					<p>Khi sử dụng css chúng ta sẽ dễ dàng quản lý nội dung trang HTML, dễ điều khiển phần định dạng, và đặc biệt là sẽ tốn ít thời gian khi code hay chỉnh sửa, giả sử các bạn có ~100 file HTML có tiêu đề như nhau, các tiêu đề này được định dạng trong từng trang HTML, khi các bạn muốn chỉnh sửa các tiêu đề này, thì các bạn sẽ phải mở và chỉnh từng trang trong ~100 file, việc này mất bao nhiêu thời gian chắc các bạn có thể ước lượng được, còn nếu ~100 file này được kết hợp với 1 file CSS thì việc định dạng tiêu đề trong ~100 file này chỉ mất vài phút.</p><br> -->
+    					<button style="background: #ff9b39; border-radius: 5px; float: left; height: 35px" class="btn1"><a href="#" class="tv" id="tuvan" >Tư vấn</a></button><br>
+    				<div class="container">
+    					<div style="background: green;height:auto;width:310px;position:absolute; border: 1px solid red;bottom: 0;right: 0; border-radius: 5px; padding: 10px; display: none" class="tuvan1" id="gs">
+							<form action="#" id="formtv">
+							<p style="color: white">Chào bạn! hãy đăng ký tham gia khóa học cùng chúng tôi.</p><br>
+							<p style="color: white">Bạn cần tư vấn gì không?</p>
+                            <p style="color: white">Hãy gửi tin nhắn tới chúng tôi để được tư vấn.</p><br>
+                       <p style="display: none; color: red; background: white" id="tv_a">Nhập vào số điện thoại của bạn bộ phận CSKH của chúng tôi sẽ hỗ trợ cho bạn!</p><br>
+                         	<br>
+							 <textarea rows="5" cols="37" placeholder=" Mời bạn nhập thắc mắc..." id="thacmac" style="padding: 5px; border-radius: 5px"></textarea><br><br>
+                         	<button style="color: red; background-color: white; width: 60px; height: 20px; border-radius: 4px;" onClick="nop_tv()" id="sub1">Submit</button>
+                         	<button style="color: red; background-color: white; width: 60px; height: 20px; border-radius: 4px; float: right" id="hiden_tv">Thoát</button>
+                         </form>
+                          </div>
+                         </div>
+                          <script> //Jquery cho button tư vấn
+
+													$("#sub1").click(function() {
+														socket.emit("User-send-thacmac", $("#thacmac").val());
+														var thac=document.getElementById("thacmac").value;
+
+														if(thac!=""){
+															$("#tv_a").show();
+															document.getElementById("formtv").reset();
+															return false;
+														}
+
+
+													});
+
+                               $(document).ready(function(){
+                                    $(".btn1").click(function(){
+                                    $(".tuvan1").animate({
+                                    height: 'toggle'
+                                  });
+										//$(".tv").attr();
+										//$(".tuvan1").fadeIn(300);
+										//var tuvantt = $(this).attr('href');
+                                       //cho hiện hộp đăng nhập trong 300ms
+                                      $(tuvantt).fadeIn(3000);
+									                    $('body').append('<div id="over">');
+                                      $('#over').fadeIn(300);
+										//return false;
+                                });
+                            });
+                          // khi click đóng hộp thoại
+                           /*  $(document).on('click', "a.close, #over", function() {
+                                   $('#over, .tuvan1').fadeOut(300 , function() {
+                                        $('#over').remove();
+                                   });
+                                     return false;
+                            }); */
+							  $(document).ready(function(){
+                                  $("#hiden_tv").click(function(){
+										              if(confirm("Bạn có chắc là muốn thoát?")==true){
+												//$(".tuvan1").hide();
+												             $(".tuvan1").hide(3000);
+																		 return false;
+											        }
+											else{
+												  $(".tuvan1").show();
+													return false;
+											}
+                                    });
+								});
+							  function nop_tv(){
+								  var thac=document.getElementById("thacmac").value;
+								  if(thac!=""){
+									  alert("Chúc mừng bạn đã submit thành công!\nCảm ơn bạn!");
+									   return false;
+								  }
+								  else{
+									  alert("Mời bạn nhập vào thắc mắc cần tư vấn!");
+									  return false;
+								  }
+							  }
+              </script>
+    				<!--	<a href="form_dk.html" class="dk">Đăng ký</a>  -->
+    				</div><br>
+    			</div><br>
+    			<hr>
+    		</div>
+    	</div>
+
+    	<div class="course" >
+    		<div class="container">
+    		    <div class="title-cs">
+    		    	<button style="border-radius: 5px" class="btn_kg"><a href="#" class="active">Lịch khai giảng</a></button>
+						<!--	<div style="background-color: #00882D; height:450px;width:600px;position:absolute; border: 1px solid red;bottom: 0;right: 0; border-radius: 10px; padding: 10px; display: none" id="htgv">
+											 <p style="float: right; padding-right: 10px">
+												 <button style="color: white; background-color: red; width: 60px; height: 20px; border-radius: 4px;" id="an_gv">Thoát</button>
+										</p>
+											<div style="padding: 20px; color: white;font-size: 20px">:<br><br>
+											</div>
+							</div> -->
+							<div style="background-color: #00882D; height:500px;width:1000px;position:absolute; border: 1px solid red;bottom: 0;right: 0; border-radius: 10px; padding: 10px; display: none" class="chon_kh">
+											 <p style="float: right; padding-right: 10px">
+												 <button style="color: white; background-color: red; width: 60px; height: 20px; border-radius: 4px;" onClick="close_kg()" id="an_kh">Thoát</button>
+										</p>
+										<div style="padding: 20px; color: white;font-size: 20px">Vui lòng chọn khóa học:<br><br>
+												<table style="font-size: 16px; border: 1px solid white;">
+																 <th style="border: 1px solid white; width: 100px">Stt
+																 </th>
+																 <th style="border: 1px solid white; width: 300px">Khóa học
+																 </th>
+																 <th style="border: 1px solid white; width: 200px">Giá tiền
+																	</th>
+																	<th style="border: 1px solid white; width: 200px">Ngày học
+																	</th>
+																	<th style="border: 1px solid white; width: 200px">Lịch học
+	  															</th>
+																	 <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">1</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center"><a href="#" onclick="return khoahoc_tc()" id="dkkh">HTML cơ bản(6 tuần)</a></td>
+   	                               	  <td style="border: 1px solid white; width: 200px; text-align: center">1.000.000đ( giảm 20% đối với học viên cũ )</td>
+                                      <td style="border: 1px solid white; width: 200px; text-align: center">20/12/2018</td>
+																			<td style="border: 1px solid white; width: 200px; text-align: center">2-4-6(7-9h tối)</td>
+   	                               </tr>
+																	 <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">2</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center"><a href="#" onclick="return khoahoc_tc()" id="dkkh">CSS cơ bản(6 tuần)</a></td>
+   	                               	  <td style="border: 1px solid white; width: 200px; text-align: center">1.000.000đ( giảm 20% đối với học viên cũ )</td>
+                                      <td style="border: 1px solid white; width: 200px; text-align: center">20/12/2018</td>
+																			<td style="border: 1px solid white; width: 200px; text-align: center">2-4-6(7-9h sáng)</td>
+   	                               </tr>
+																	 <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">1</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center"><a href="#" onclick="return khoahoc_tc()" id="dkkh">Javascript</a></td>
+   	                               	  <td style="border: 1px solid white; width: 200px; text-align: center">2.800.000đ( giảm 20% đối với học viên cũ )</td>
+                                      <td style="border: 1px solid white; width: 200px; text-align: center">20/01/2019</td>
+																			<td style="border: 1px solid white; width: 200px; text-align: center">3-5-7(7-9h tối)</td>
+   	                               </tr>
+																	 <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">1</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center"><a href="#" onclick="return khoahoc_tc()" id="dkkh">NodeJS</a></td>
+   	                               	  <td style="border: 1px solid white; width: 200px; text-align: center">5.000.000đ( giảm 20% đối với học viên cũ )</td>
+                                      <td style="border: 1px solid white; width: 200px; text-align: center">20/02/2019</td>
+																			<td style="border: 1px solid white; width: 200px; text-align: center">2-4-6(7-10h tối)</td>
+   	                               </tr>
+												</table>
+										</div>
+										<script>
+										//$("#an_gv").click(function() {
+										//	 $("#htgv").hide();
+										//});
+										    function khoahoc_tc() {
+										       if(confirm("Bạn có chắc mình đăng kí khóa học này?")==true){
+														 alert("Chúc mừng bạn đã đăng kí thành công!");
+
+														 return false;
+													 }else {
+													 	$("#chon_kh").hide();
+														return false;
+													 }
+										    }
+										</script>
+            	</div>
+    		    	<div style="background-color: #00882D; height:500px;width:1000px;position:absolute; border: 1px solid red;bottom: 0;right: 0; border-radius: 10px; padding: 10px; display: none" class="lich_kg">
+  		    	           <p style="float: right; padding-right: 10px">
+    		    	           <button style="color: white; background-color: red; width: 60px; height: 20px; border-radius: 4px;" onClick="close_kg()" id="hide_kg">Thoát</button>
+    		    	      </p>
+   		    	          <div style="padding: 20px; color: white;font-size: 20px">Lịch khai giảng:<br><br>
+   		    	              <table style="font-size: 16px; border: 1px solid white;">
+   	                               <th style="border: 1px solid white; width: 100px">Stt
+   	                               </th>
+   	                               <th style="border: 1px solid white; width: 300px">Khóa học
+   	                               </th>
+   	                               <th style="border: 1px solid white; width: 300px">Giá tiền
+   	                               </th>
+   	                               <th style="border: 1px solid white; width: 300px">Thời gian học
+   	                               </th>
+   	                               <th style="border: 1px solid white; width: 300px">ngày bắt đầu
+   	                               </th>
+																	 <th style="border: 1px solid white; width: 300px">Đăng kí
+   	                               </th>
+   	                               <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">1</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center">HTML cơ bản(6 tuần)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">1.000.000đ( giảm 20% đối với học viên cũ )</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">thư 2-4-6(7h-9h tối)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">20-11-2018</td>
+																			<td style="border: 1px solid white; width: 100px; text-align: center"><a href="http://localhost:8888/dangki" style="color: red; height: 40px;">Đăng kí</a></td>
+   	                               </tr>
+   	                               <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">2</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center">CSS (6 tuần)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">1.200.000đ( giảm 20% đối với học viên cũ )</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">thư 3-5-7(7h-9h tối)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">30-11-2018</td>
+																			<td style="border: 1px solid white; width: 100px; text-align: center"><a href="http://localhost:8888/dangki" style="color: red; height: 40px;">Đăng kí</a></td>
+   	                               </tr>
+   	                                <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">3</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center">Javascript cơ bản (12 tuần)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">3.000.000đ( giảm 20% đối với học viên cũ )</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">thư 3-5-7(7h-10h tối)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">22-12-2018</td>
+																			<td style="border: 1px solid white; width: 100px; text-align: center"><a href="http://localhost:8888/dangki" style="color: red; height: 40px;">Đăng kí</a></td>
+   	                               </tr>
+   	                                <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">4</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center">PHP (12 tuần)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">3.000.000đ( giảm 20% đối với học viên cũ )</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">thư 3-5-7(7h-9h tối)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">30-01-2019</td>
+																			<td style="border: 1px solid white; width: 100px; text-align: center"><a href="http://localhost:8888/dangki" style="color: red; height: 40px;">Đăng kí</a></td>
+   	                               </tr>
+   	                                <tr>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">5</td>
+   	                               	  <td style="border: 1px solid white; width: 300px; text-align: center">NodeJS (18 tuần)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">6.200.000đ( giảm 20% đối với học viên cũ. Khi học viên đăng ký được tặng thêm 1 buổi định hướng. )</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">thư 3-5-7(7h-11h sáng)</td>
+   	                               	  <td style="border: 1px solid white; width: 100px; text-align: center">30-04-2019</td>
+																			<td style="border: 1px solid white; width: 100px; text-align: center"><a href="http://localhost:8888/dangki" style="color: red; height: 40px;">Đăng kí</a></td>
+   	                               </tr>
+   		    	              </table>
+   		    	          </div>
+					</div>
+    		    	<button style="border-radius: 5px" class="btn2"><a href="#" class="active">Giảng viên</a></button>
+    		    	<div class="container">
+    		    	<div style="background-image: url(imagine/a_gv1.jpg);height:500px;width:1000px;position:absolute; border: 1px solid red;bottom: 0;right: 0; border-radius: 5px; padding: 10px; display: none" class="giangvien">
+  		    	           <p style="float: right; padding-right: 10px">
+    		    	           <button style="color: white; background-color: red; width: 60px; height: 20px; border-radius: 4px;" onClick="close_gv()" id="hide_gv">Thoát</button>
+    		    	      </p>
+   		    	          <div style="padding: 20px; color: white;font-size: 20px">Giảng viên bao gồm:
+   		    	              <ol type="1" style="padding-left: 80px;font-size: 16px"><br>
+   		    	              	<li>A phụ trách về front-end, thiết kế và tư vấn.</li><br>
+   		    	              	<li>Nguyễn văn A phụ trách phần back-end.</li><br>
+   		    	              	<li>Nguyễn B phụ trách phần cơ sở dữ liệu.</li>
+   		    	              </ol>
+   		    	          </div>
+					</div>
+   		    	</div>
+    		    	<script>
+						// popup của giảng viên
+                               $(document).ready(function(){
+                                    $(".btn2").click(function(){
+                                    $(".giangvien").animate({
+                                    height: 'toggle'
+                                  });
+                                });
+                               });
+						       $(document).ready(function(){
+                                        $("#hide_gv").click(function(){
+                                        $(".giangvien").hide();
+                                    });
+								});
+						// popup của lịch khai giảng
+						   $(document).ready(function(){
+                                    $(".btn_kg").click(function(){
+                                    $(".lich_kg").animate({
+                                    height: 'toggle'
+                                  });
+                                });
+                               });
+						       $(document).ready(function(){
+                                        $("#hide_kg").click(function(){
+                                        $(".lich_kg").hide();
+                                    });
+								});
+              </script>
+    		    </div>
+    			<div class="contend-course" id="noidung_kh">
+    				<div class="list">
+    					<a href="http://localhost:8888/gt_html"><img src="imagine/logo1.jpg" width="100" height="140"></a>
+    					<h4><a href="http://localhost:8888/gt_html">Khóa học HTML</a></h4>
+    				</div>
+    				<div class="list">
+    					<a href="http://localhost:8888/gt_css"><img src="imagine/logo2.jpg" width="100" height="140"></a>
+    					<h4><a href="http://localhost:8888/gt_css">Khóa học CSS</a></h4>
+    				</div>
+    				<div class="list">
+    					<a href="http://localhost:8888/gt_jq"><img src="imagine/logo3.jpg" width="100" height="140" ></a>
+    					<h4><a href="http://localhost:8888/gt_jq">Khóa học JQuery</a></h4>
+    				</div>
+    				<div class="list">
+    					<a href="http://localhost:8888/gt_js"><img src="imagine/logo4.jpg" width="100" height="140"></a>
+    					<h4><a href="http://localhost:8888/gt_js">Khóa học JS</a></h4>
+    				</div>
+    				<div class="list">
+    					<a href="http://localhost:8888/gt_bt"><img src="imagine/logo5.jpg" width="100" height="140"></a>
+    					<h4><a href="http://localhost:8888/gt_bt">Khóa học BOOTSTRAP</a></h4>
+    				</div>
+    				<div class="list">
+    					<a href="http://localhost:8888/gt_aj"><img src="imagine/logo6.jpg" width="100" height="140"></a>
+    					<h4><a href="http://localhost:8888/gt_aj">Khóa học AJAX</a></h4>
+    				</div>
+    				<div class="list">
+    					<a href="http://localhost:8888/gt_php"><img src="imagine/logo7.jpg" width="100" height="140"></a>
+    					<h4><a href="http://localhost:8888/gt_php">Khóa học PHP</a></h4>
+    				</div>
+    				<div class="list">
+    					<a href="http://localhost:8888/gt_nodejs"><img src="imagine/logo8.png" width="100" height="140"></a>
+    					<h4><a href="http://localhost:8888/gt_nodejs">Khóa học NodeJS</a></h4>
+    				</div>
+    				<div class="clear"></div>
+    			</div>
+    		</div>
+    	</div>
+    	<div class="hotro">
+    		<div class="container">
+    		    <h2 class="title" style="color: green; text-align: center">Hỗ trợ tra cứu</h2><hr><br>
+    		    <div class="tracuu">
+    		    	<div class="ds">
+    		    		<a href="http://localhost:8888/dangnhap" class="diemthi" onclick="return tradt()"><img src="imagine/tracuu1.jpg" width="100" height="100" ></a>
+    		    		<p> <a href="http://localhost:8888/dangnhap" class="diemthi" onclick="return tradt()">Tra cứu điểm thi</a><br><br>
+    		    		Hỗ trợ học viên tra cứu kết quả thi sau ngày thi 2 tuần</p>
+								<script>
+								    function tradt() {
+								    	alert("Xin vui lòng đăng nhập để xem điểm của mình!");
+											window.open("http://localhost:8888/dangnhap");
+											return false;
+								    }
+								</script>
+    		    	</div>
+    		    	<div class="ds">
+    		    		<a href="#"><img src="imagine/tracuu2.jpg" width="100" height="100"></a>
+    		    		<p> <a href="#">Tài liệu học tập</a><br><br>
+    		    		Chia sẻ tài liệu học tập miễn phí phong phú trong nhiều lĩnh vực.</p>
+    		    	</div>
+    		    	<div class="ds">
+    		    		<a href="#"><img src="imagine/tracuu3.jpg" width="100" height="100"></a>
+    		    		<p> <a href="#">Giới thiệu việc làm</a><br><br>
+    		    		Là cầu nối giữa học viên và các nhà tuyển dụng.</p>
+    		    	</div>
+    		    	<div class="ds">
+    		    		<a href="#"><img src="imagine/tracuu4.png" width="100" height="100"></a>
+    		    		<p> <a href="#">Lớp học trực tuyến</a><br><br>
+    		    		Lớp học trực tiếp với giảng viên qua mạng</p>
+    		    	</div>
+    		    	<div class="ds">
+    		    		<a href="http://localhost:8888/dangnhap" onclick="return tradt()"><img src="imagine/tracuu5.jpg" width="100" height="100"></a>
+    		    		<p> <a href="http://localhost:8888/dangnhap" onclick="return tradt()">Tra cứu chứng chỉ</a><br><br>
+    		    		Hỗ trợ học viên tra cứu chứng chỉ được trung tâm cấp sau 1 tháng thi</p>
+    		    	</div>
+    		    	<div class="ds">
+    		    		<a href="#"><img src="imagine/tracuu6.jpg" width="100" height="100"></a>
+    		    		<p> <a href="#">Đề tài CNTT</a><br><br>
+    		    		Kho đề tài, ứng dụng của học viên khóa trước.</p>
+    		    	</div>
+    		    	<div class="clear"></div>
+    		    </div>
+			</div>
+		</div>
+
+        <div class="gg-map">
+        	<div class="container">
+        		<div id="googleMap" style="width: 100%; height: 500px;">Google Map</div><br>
+        		<script type="text/javascript">
+                    var gmap = new google.maps.LatLng(10.765974,106.689422);
+                    var marker;
+                    function initialize(){
+                       var mapProp = {
+                           center:new google.maps.LatLng(10.765974,106.689422),  zoom:16,
+                           mapTypeId:google.maps.MapTypeId.ROADMAP
+                       };
+                       var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                       var styles = [ { featureType: 'road.arterial', elementType: 'all', stylers: [{                    hue: '#fff' }, { saturation: 100 },{ lightness: -48 },
+                                        { visibility: 'on' } ]},{featureType: 'road', elementType: 'all',stylers: [] },{featureType: 'water', elementType: 'geometry.fill', stylers: [ { color: '#adc9b8' } ]},{
+                                          featureType: 'landscape.natural', elementType: 'all',stylers: [{ hue: '#809f80' },{ lightness: -35 } ]}];
+                       var styledMapType = new google.maps.StyledMapType(styles);map.mapTypes.set('Styled', styledMapType);
+                       marker = new google.maps.Marker({map:map,draggable:true,animation: google.maps.Animation.DROP, position: gmap});google.maps.event.addListener(marker, 'click', toggleBounce);}
+                    function toggleBounce() {
+                        if (marker.getAnimation() !== null) {
+							marker.setAnimation(null);
+                        } else {
+                            marker.setAnimation(google.maps.Animation.BOUNCE);
+                        }
+                    }
+                      google.maps.event.addDomListener(window, 'load', initialize);
+                 </script>
+                 <div class="clear"></div>
+        	</div>
+        </div>
+    </div><!--div của contend-->
+
+    <div class="footer">
+    	<div class="container">
+    	<div class="footer-main">
+    		<div class="footer-colunm">
+    		   <p style="font-size: 20px">Trụ sở chính:</p><hr>
+			</div>
+    		<div class="footer-colunm">
+    		  <p style="font-size: 20px">Chính sách và quy định:</p><hr><br>
+    		  <a href="#">- Điều khoản dịch vụ</a><br><br>
+    		  <a href="#">- Chính sách bảo mật</a><br><br>
+    		  <a href="#">- Số ĐK:.... cấp ngày....</a>
+    	    </div>
+
+    	    <div class="footer-colunm">
+    		   <p style="font-size: 20px">Mạng xã hội:</p><hr><br>
+    		   <a href="https://www.facebook.com/dinhnghia.95"> <img src="imagine/icon1.jpg" width="50" height="50" title="Liên hệ với chúng tôi"></a>
+    		   <a href="https://id.zalo.me/account"> <img src="imagine/icon2.jpg" width="50" height="50" title="Liên hệ với chúng tôi"></a>
+    		   <a href="https://www.youtube.com/?utm_source=directory&utm_campaign=CoccocAds&utm_medium=CoccocBrowser"> <img src="imagine/icon3.png" width="50" height="50" title="Liên hệ với chúng tôi"></a>
+    	    </div>
+
+    	</div>
+    	<div class="footer-copyright">
+    	      <p style="text-align: center; color: white">TP.HCM tháng 9 năm 2018 by <i>Võ Đình Nghĩa</i></p>
+    	</div>
+    	</div>
+    </div><!--div của footer-->
+<div class="trochuyen" style="position: fixed; bottom: 0; right: 0">
+	<div id="exit"><a href="#" onClick="hide()" style="color: red; font-size: 20px;float: right">[X]</a></div>
+		<div id="conten">
+			 <div class="" style="width: 300px; height: 350px; border: 1px solid red; border-radius: 5px;
+			 background: green">
+				<div id="loginform_chat" style="padding: 10px">
+              <p style="color: white; padding-top: 20px; font-size: 16px">Nơi trò chuyện chia sẻ về lập trình và các kiến thức liên quan. </p>
+              <p style="color: white; padding-top: 20px; font-size: 16px">Nhập tên của bạn để đăng kí vào nhóm chat: </p><br><br>
+							<input type="text" id="txtusername"/ style="float: left; width: 160px; border: 1px solid black; height: 30px">
+							<input type="button" value="Đăng ký" id="btndangky"/ style="color: red; height: 30px; float: right; width: 100px; font-size: 16px; border-radius: 5px; border: 1px solid black">
+				</div>
+
+				<div id="chatform">
+              <div id="formleft" style="width: 35%; float: left; background: white; height: 300px; margin-top:24px">
+                   <div id="boxtitle"  style="border: 1px solid black; text-align: center; padding: 4px; color: red">online</div>
+									 <!-- style="padding: 4px ; text-align: center; top: 0px; color: green; height: auto" -->
+									 <div id="boxcontend" style="padding: 4px ; text-align: center; top: 0px; color: green; height: auto; background: #F2F5A9">
+									 </div>
+							</div>
+							<div id="formright" style="width: 65%; float: right; background: #d4f9f8; height: 300px">
+                    <div id="sayhi" style="text-align: right; color: red">
+                         Hello <span id="curentuser"></span>
+												 <input type="button" id="btnlogout" value="Thoát"/ style="color: green">
+										</div>
+										<div id="listmessages" style="background: white; height: 220px; padding: 5px;">
+										</div>
+										<div id="thongbao_tn"></div>
+									<form action="#" id="nchat">
+										<input type="text" id="txtmessage" style="width: 150px; height: 30px; background: transparent; border: 1px solid black"/>
+										<input type="button" id="btnsendmessage" value="gửi" style="width: 40px; color: red;  height: 30px">
+									</form>
+							</div>
+				</div>
+		</div>
+		<div id="look"><a href="#" onClick="blook()" style="color: blue; font-size: 20px;float: right; color: red; display: none">nhóm chat</a></div>
+</div>
+</div>
+<script>
+socket.on("server-send-dki-thatbai", function() {
+	alert("Đã có người đăng ký tên này rồi!");
+});
+
+socket.on("server-send-danhsach-Users", function(data) {
+  $("#boxcontend").html("");
+	//var i;
+	//data.forEch(function(){
+		//$("#boxcontend").append("<div class='user'>"+ data[0] + "</div>");
+	//});
+for (var i = 0; i < data.length; i++) {
+	if(i===0){
+		 $("#boxcontend").append(document.getElementById('boxcontend').innerHTML=data.join('<br>')+"<br>");
+		return false;
+	//$("#boxcontend").append(data);
+  }else {
+	//$("#boxcontend").append(document.getElementById('boxcontend').style.display="none");
+ }
+}
+});
+
+socket.on("server-send-dki-thanhcong", function(data) {
+	$("#curentuser").html(data);
+	$("#loginform_chat").hide(2000);
+	$("#chatform").show(1000);
+});
+
+socket.on("server-send-message", function(data) {
+	$("#listmessages").append("<div class='ms'>"+ data.un + " : "+ data.nd+"</div>")
+});
+
+socket.on("ai-dang-nhap-tin-nhan", function(data) {
+	$("#thongbao_tn").html(data);
+});
+
+socket.on("ai-dung-nhap-tin-nhan", function(s) {
+	//$("#thongbao_tn").html("");
+});
+
+$("#btnsendmessage").click(function(){
+	socket.emit("user-send-message", $("#txtmessage").val());
+	//$("#thongbao_tn").hide();
+	document.getElementById("nchat").reset();
+//$("#txtmessage").style.display="none";
+});
+
+$(document).ready(function(){
+	$("#loginform_chat").show();
+	$("#chatform").hide();
+	$("#txtmessage").focusin(function() {
+		socket.emit("toi-dang-go-chu");
+	});
+
+	$("#txtmessage").focusin(function() {
+		socket.emit("toi-dung-go-chu");
+	});
+
+	$("#btndangky").click(function(){
+		socket.emit("client-send-Username", $("#txtusername").val());
+	});
+
+	$("#btnlogout").click(function() {
+		socket.emit("logout");
+		$("#loginform_chat").show();
+		$("#chatform").hide();
+	});
+});
+
+	function blook(){
+		document.getElementById('exit').style.display="block";
+		 document.getElementById('conten').style.display="block";
+		 document.getElementById('look').style.display="none";
+	}
+	function hide(){
+	document.getElementById('exit').style.display="none";
+	document.getElementById('conten').style.display="none";
+	document.getElementById('look').style.display="block";
+}
+	</script>
+</body>
+</html>
